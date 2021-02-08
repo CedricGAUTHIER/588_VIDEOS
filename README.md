@@ -1,4 +1,4 @@
-# 588_videos
+# 588_VIDEOS
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -38,7 +38,7 @@ sudo apt-get install git
    
    In a shell:
 ```sh
-git clone https://github.com/CedricGAUTHIER/588_videos
+git clone https://github.com/CedricGAUTHIER/588_VIDEOS
 ```
 2. Open VS Code
 3. Install Markdown Preview Enhancement plugin
@@ -69,9 +69,6 @@ My Profil</a>
 
 <a href="https://github.com/CedricGAUTHIER/588_VIDEOS">
 Project Link (GITHUB)</a>
-
-
-
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
