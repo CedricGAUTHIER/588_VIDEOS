@@ -62,11 +62,14 @@ This is mainly for my personnal use. It is above all a demo project to demonstra
 
 Cédric GAUTHIER :
 
-📬 cgauthier.dev@gmail.com
+📬 cgauthier@588dev.org
 
-[![](docs/linkedin.png)](https://www.linkedin.com/in/cedric-gauthier/)
+![](docs/images/linkedin.png) <a href="https://www.linkedin.com/in/cedric-gauthier/">
+My Profil</a>
 
-Project Link: [https://github.com/CedricGAUTHIER/588_videos](https://github.com/CedricGAUTHIER/588_videos)
+<a href="https://github.com/CedricGAUTHIER/588_VIDEOS">
+Project Link (GITHUB)</a>
+
 
 
 
