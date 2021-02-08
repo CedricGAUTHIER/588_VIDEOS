@@ -1,4 +1,4 @@
-# 588_videos
+# 588_VIDEOS
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -38,7 +38,7 @@ sudo apt-get install git
    
    In a shell:
 ```sh
-git clone https://github.com/CedricGAUTHIER/588_videos
+git clone https://github.com/CedricGAUTHIER/588_VIDEOS
 ```
 2. Open VS Code
 3. Install Markdown Preview Enhancement plugin
@@ -62,11 +62,11 @@ This is mainly for my personnal use. It is above all a demo project to demonstra
 
 Cédric GAUTHIER :
 
-📬 cgauthier.dev@gmail.com
+📬 cgauthier@588dev.org
 
 [![](docs/linkedin.png)](https://www.linkedin.com/in/cedric-gauthier/)
 
-Project Link: [https://github.com/CedricGAUTHIER/588_videos](https://github.com/CedricGAUTHIER/588_videos)
+Project Link: [https://github.com/CedricGAUTHIER/588_VIDEOS](https://github.com/CedricGAUTHIER/588_VIDEOS)
 
 
 
