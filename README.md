@@ -12,6 +12,8 @@ To manage my own video library :
 - where can I find a movie
 - .....
 
+## <a href="./docs/specification/specifications.md">SPECIFICATIONS</a>
+
 ### Built With
 
 * 🖊️ Markdown
