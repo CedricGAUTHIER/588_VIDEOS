@@ -20,13 +20,15 @@
         margin-left: $gutter;
         flex-grow: 6;
         font-size: 2em;
-        font-family: 'Bangers', cursive;
+        font-family: $fontPage;
+        text-align: left;
         
 
     }
     &-pseudo{
         flex-grow: 2;
-        font-family: 'Gidugu', sans-serif;
+        font-family: $fontPseudo;
         font-size: 2em;
+        text-align: right;
     }
 }

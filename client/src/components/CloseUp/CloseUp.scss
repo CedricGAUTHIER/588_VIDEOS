@@ -1,0 +1,22 @@
+@import '../../styles/vars.scss';
+.burger{
+  text-align: left;
+  
+  ul{
+    list-style: none;
+  }
+  li{
+    
+    padding-bottom: $gutter*2;
+    color: $blueColor50 ;
+    display: flex;
+  }
+}
+
+.text{
+  margin-left: $gutter;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $blueColor50 ;
+  text-decoration: none;
+}
