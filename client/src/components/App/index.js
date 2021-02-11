@@ -10,6 +10,7 @@ import Search from '../Search';
 import CloseUp from '../CloseUp';
 import UserMenu from '../UserMenu';
 import SignUp from '../SignUp';
+import Contact from '../Contact'; 
 import { FaCompactDisc, FaSearch, FaLightbulb, FaUserPlus} from 'react-icons/fa';
 
 function App() {
@@ -84,6 +85,12 @@ function App() {
             exact path="/sign-up"
             render={()=>
               <SignUp setPage={setPage}/>
+            }
+          />
+          <Route 
+            exact path="/contact"
+            render={()=>
+              <Contact setPage={setPage}/>
             }
           />
         </Switch>
