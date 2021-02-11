@@ -1,5 +1,5 @@
 @import '../../styles/vars.scss';
-.burger{
+.user{
   text-align: left;
   ul{
     list-style: none;
@@ -23,4 +23,8 @@
   text-transform: uppercase;
   color: $blueColor50 ;
   text-decoration: none;
+}
+
+.icon{
+  color: $blueColor50;
 }

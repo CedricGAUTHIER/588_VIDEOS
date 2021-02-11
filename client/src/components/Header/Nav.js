@@ -8,7 +8,7 @@ import { TiContacts } from "react-icons/ti";
 
 
 
-const Nav = ({page, pseudo, burgerOpened, setBurgerOpened}) => {
+const Nav = ({page, pseudo, burgerOpened, setBurgerOpened, userOpened, setUserOpened}) => {
   return(
     <div className="nav">
       <div className="nav-icon-menu">
@@ -17,7 +17,8 @@ const Nav = ({page, pseudo, burgerOpened, setBurgerOpened}) => {
             <FaHome
               size={30}
               onClick= {()=>{
-                setBurgerOpened(false)
+                setBurgerOpened(false);
+                setUserOpened(false);
               }}
             />
           </NavLink>
@@ -27,6 +28,7 @@ const Nav = ({page, pseudo, burgerOpened, setBurgerOpened}) => {
             size={30}
             onClick= {()=>{
               setBurgerOpened(!burgerOpened)
+              setUserOpened(false);
             }}
           />
         </div>
@@ -41,6 +43,10 @@ const Nav = ({page, pseudo, burgerOpened, setBurgerOpened}) => {
         <div className="nav-icon">
           <FaUserCircle
             size={30}
+            onClick= {()=>{
+              setBurgerOpened(false);
+              setUserOpened(!userOpened)
+            }}
           />
         </div>
         <div className="nav-icon">
