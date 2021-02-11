@@ -16,6 +16,7 @@
         }
         
     }
+    
     &-page{
         margin-left: $gutter;
         flex-grow: 6;
@@ -31,4 +32,12 @@
         font-size: 2em;
         text-align: right;
     }
+}
+.nav-icon:hover{
+    color: #f3a909;
+    border-bottom: 1px solid;
+}
+.nav-icon:visited{
+    color:$blueColor50;
+    border-bottom: 1px solid;
 }

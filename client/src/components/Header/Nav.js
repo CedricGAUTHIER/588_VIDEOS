@@ -50,9 +50,16 @@ const Nav = ({page, pseudo, burgerOpened, setBurgerOpened, userOpened, setUserOp
           />
         </div>
         <div className="nav-icon">
-          <TiContacts
-            size={30}
-          />
+          <NavLink exact to="/contact">
+            <TiContacts
+              size={30}
+              onClick= {()=>{
+                setBurgerOpened(false);
+                setUserOpened(false);
+              }}
+            />
+          </NavLink>
+          
         </div>
       </div>
      
