@@ -1,0 +1,20 @@
+@import '../../styles/vars.scss';
+.app {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  &-burger{
+    background-color: $blueColor700;
+    
+  }
+  &-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  &-header{
+    
+  }
+}
+
+
