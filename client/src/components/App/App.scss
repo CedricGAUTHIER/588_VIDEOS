@@ -7,6 +7,12 @@
     background-color: $blueColor700;
     
   }
+  &-user{
+    background-color: $blueColor700;
+    text-align: center;
+    
+  }
+  
   &-content{
     display: flex;
     flex-direction: column;

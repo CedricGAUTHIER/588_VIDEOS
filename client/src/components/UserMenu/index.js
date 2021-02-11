@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './BurgerMenu.scss';
+import './UserMenu.scss';
 
-function BurgerMenu({items, setBurgerOpened}) {
+function UserMenu({items, setUserOpened}) {
   
   return (
-    <div className="burger">
-      <h2 className="burger-title">menu principal</h2>
+    <div className="user">
+      <h2 className="user-title">menu utilisateur</h2>
       <ul >
         {items.map(item => (
           <li key={item.id}>
@@ -18,7 +18,7 @@ function BurgerMenu({items, setBurgerOpened}) {
               className="text"
               exact to={item.route}
               onClick={()=>{
-                setBurgerOpened(false);
+                setUserOpened(false);
               }}
               >
               {item.text}
@@ -31,4 +31,4 @@ function BurgerMenu({items, setBurgerOpened}) {
   );
 }
 
-export default BurgerMenu;
+export default UserMenu;
