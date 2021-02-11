@@ -2,11 +2,11 @@ import React from 'react';
 
 import './CloseUp.scss';
 
-function CloseUp() {
-  
+function CloseUp({ setPage }) {
+  setPage('la proposition du moment');
   return (
     <div className="CloseUp">
-       CloseUp
+       Page CloseUp
     </div>
   );
 }

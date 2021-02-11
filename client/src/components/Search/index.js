@@ -2,8 +2,8 @@ import React from 'react';
 
 import './Search.scss';
 
-function Search() {
-  
+function Search({setPage}) {
+  setPage('recherche');
   return (
     <div className="search">
        SEARCH

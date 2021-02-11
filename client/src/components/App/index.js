@@ -37,10 +37,30 @@ function App() {
         </div>
         
         <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/videos" component={Videos}/>
-          <Route exact path="/search" component={Search}/>
-          <Route exact path="/close-up" component={CloseUp}/>
+          <Route 
+            exact path="/"
+            render={()=>
+              <Home setPage={setPage}/>
+            }
+          />
+          <Route 
+            exact path="/videos"
+            render={()=>
+              <Videos setPage={setPage}/>
+            }
+          />
+          <Route 
+            exact path="/search"
+            render={()=>
+              <Search setPage={setPage}/>
+            }
+          />
+          <Route 
+            exact path="/close-up"
+            render={()=>
+              <CloseUp setPage={setPage}/>
+            }
+          />
         </Switch>
       </div>
     </div>

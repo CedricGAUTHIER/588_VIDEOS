@@ -2,11 +2,12 @@ import React from 'react';
 
 import './Videos.scss';
 
-function Videos() {
-  
+function Videos({ setPage }) {
+  setPage('les vidéos');
   return (
+    
     <div className="videos">
-       VIDEOS
+      page les vidéos
     </div>
   );
 }
