@@ -1,0 +1,43 @@
+@import '../../styles/vars.scss';
+.nav{
+    display: flex;
+    justify-content: flex-start;
+    
+    align-items: center;
+    background-color: $blueColor800;
+    color: $blueColor50;
+    padding: $gutter;
+    &-icon{
+        padding: $gutter;
+        
+        &-menu{
+            display: flex;
+            justify-content: space-between;
+        }
+        
+    }
+    
+    &-page{
+        margin-left: $gutter;
+        flex-grow: 6;
+        font-size: 2em;
+        font-family: $fontPage;
+        text-align: left;
+        
+
+    }
+    &-pseudo{
+        flex-grow: 2;
+        font-family: $fontPseudo;
+        font-size: 2em;
+        text-align: right;
+    }
+}
+.nav-icon:hover{
+    color: #f3a909;
+    border-bottom: 1px solid;
+}
+.nav-icon:visited{
+    color:$blueColor50;
+    border-bottom: 1px solid;
+}

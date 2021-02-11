@@ -1,0 +1,26 @@
+@import '../../styles/vars.scss';
+.burger{
+  text-align: left;
+  ul{
+    list-style: none;
+  }
+  li{
+    padding-bottom: $gutter;
+    display: flex;
+  }
+  &-title{
+    text-align: center;
+    color: #ffffff;
+    text-decoration: underline;
+    font-family: $fontPage;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+}
+.text{
+  margin: $gutter;
+  margin-left: $gutter/2;
+  text-transform: uppercase;
+  color: $blueColor50 ;
+  text-decoration: none;
+}

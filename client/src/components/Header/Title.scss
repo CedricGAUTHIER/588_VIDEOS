@@ -1,0 +1,50 @@
+@import '../../styles/vars.scss';
+.title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $blueColor900;
+    color: #ffffff;
+    &-logo{
+        max-width: 10%;
+        min-width: 5%;
+        height: auto;
+        border-radius: 100%;
+    }
+    &-title{
+        margin-left: 1em;
+        font-size: 4em;
+        font-family: $fontSiteTitle;
+        max-width: 100%;
+        min-width: 80%;
+    }
+
+    @media screen and (max-width: 500px){
+        
+        &-title{
+            margin-left: 1em;
+            font-size: 2em;
+            font-family: $fontSiteTitle;
+            max-width: 50%;
+            
+        }
+    }
+    @media screen and (max-width: 1300px){
+        &-logo{
+            max-width: 15%;
+            min-width: 10%;
+            height: auto;
+        }
+        
+    }
+    @media screen and (max-width: 800px){
+        &-logo{
+            max-width: 20%;
+            min-width: 15%;
+            height: auto;
+        }
+        
+    }
+        
+}
+
