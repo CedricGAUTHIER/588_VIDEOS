@@ -1,4 +1,4 @@
-import React from 'react';
+import {React} from 'react';
 import { NavLink } from 'react-router-dom';
 import './Nav.scss';
 import {GiHamburgerMenu} from 'react-icons/gi';
@@ -9,22 +9,27 @@ import { TiContacts } from "react-icons/ti";
 
 
 const Nav = ({page, pseudo, burgerOpened, setBurgerOpened, userOpened, setUserOpened}) => {
+  
   return(
     <div className="nav">
       <div className="nav-icon-menu">
         <div className="nav-icon">
           <NavLink exact to="/">
             <FaHome
+              color= 'white'
               size={30}
               onClick= {()=>{
                 setBurgerOpened(false);
                 setUserOpened(false);
+                
               }}
             />
           </NavLink>
         </div>
         <div className="nav-icon">
           <GiHamburgerMenu
+            color= 'white'
+            className="link"
             size={30}
             onClick= {()=>{
               setBurgerOpened(!burgerOpened)
@@ -42,6 +47,8 @@ const Nav = ({page, pseudo, burgerOpened, setBurgerOpened, userOpened, setUserOp
       <div className="nav-icon-menu">
         <div className="nav-icon">
           <FaUserCircle
+            className="link"
+            color= 'white'
             size={30}
             onClick= {()=>{
               setBurgerOpened(false);
@@ -52,6 +59,8 @@ const Nav = ({page, pseudo, burgerOpened, setBurgerOpened, userOpened, setUserOp
         <div className="nav-icon">
           <NavLink exact to="/contact">
             <TiContacts
+              className="link"
+              color= 'white'
               size={30}
               onClick= {()=>{
                 setBurgerOpened(false);

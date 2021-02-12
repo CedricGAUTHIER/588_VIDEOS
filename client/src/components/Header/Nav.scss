@@ -4,7 +4,7 @@
     justify-content: flex-start;
     
     align-items: center;
-    background-color: $blueColor800;
+    background-color: $blueColor600;
     color: $blueColor50;
     padding: $gutter;
     &-icon{
@@ -33,11 +33,10 @@
         text-align: right;
     }
 }
+
 .nav-icon:hover{
-    color: #f3a909;
-    border-bottom: 1px solid;
+    border-bottom: 2px  $blueColor900 solid;
+    
 }
-.nav-icon:visited{
-    color:$blueColor50;
-    border-bottom: 1px solid;
-}
+
+
