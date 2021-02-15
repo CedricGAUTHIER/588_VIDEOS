@@ -3,7 +3,7 @@ import Title from './Title';
 import Nav from './Nav';
 
 
-function Header({page, pseudo, burgerOpened, setBurgerOpened, userOpened, setUserOpened}) {
+function Header({page, pseudo, menuOpened, setMenuOpened}) {
   
   return (
     <div className="header">
@@ -11,10 +11,8 @@ function Header({page, pseudo, burgerOpened, setBurgerOpened, userOpened, setUse
         <Nav
           page={page}
           pseudo={pseudo}
-          burgerOpened={burgerOpened}
-          setBurgerOpened={setBurgerOpened}
-          userOpened={userOpened}
-          setUserOpened={setUserOpened}
+          menuOpened={menuOpened}
+          setMenuOpened={setMenuOpened}
         />
     </div>
   );

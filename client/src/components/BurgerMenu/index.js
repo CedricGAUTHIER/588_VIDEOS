@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './BurgerMenu.scss';
 
-function BurgerMenu({items, setBurgerOpened}) {
+function BurgerMenu({items, setMenuOpened}) {
   
   return (
     <div className="burger">
@@ -18,7 +18,9 @@ function BurgerMenu({items, setBurgerOpened}) {
               className="text"
               exact to={item.route}
               onClick={()=>{
-                setBurgerOpened(false);
+                setMenuOpened({
+                  ...setMenuOpened,
+                  burgerOpened:false});
               }}
               >
               {item.text}
