@@ -17,7 +17,7 @@ function App() {
   //nom de page dans nav
   const [page,setPage]=useState('ACCUEIL');
   // nom du pseudo dans nav
-  const [pseudo, setPseudo]=useState('PSEUDO est connecté');
+  const [pseudo, setPseudo]=useState("Vous n'êtes pas connecté");
   // gestion du menu burger
     // ouverture-fermeture du menu
   const [burgerOpened, setBurgerOpened]=useState(false);
