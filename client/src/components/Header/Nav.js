@@ -8,7 +8,7 @@ import { TiContacts } from "react-icons/ti";
 
 
 
-const Nav = ({page, pseudo, burgerOpened, setBurgerOpened, userOpened, setUserOpened}) => {
+const Nav = ({page, pseudo, menuOpened, setMenuOpened}) => {
   
   return(
     <div className="nav">
@@ -19,9 +19,9 @@ const Nav = ({page, pseudo, burgerOpened, setBurgerOpened, userOpened, setUserOp
               color= 'white'
               size={30}
               onClick= {()=>{
-                setBurgerOpened(false);
-                setUserOpened(false);
-                
+                setMenuOpened({
+                  burgerOpened:false,
+                  userOpened:false});
               }}
             />
           </NavLink>
@@ -32,8 +32,12 @@ const Nav = ({page, pseudo, burgerOpened, setBurgerOpened, userOpened, setUserOp
             className="link"
             size={30}
             onClick= {()=>{
-              setBurgerOpened(!burgerOpened)
-              setUserOpened(false);
+              setMenuOpened({
+                  burgerOpened:!menuOpened.burgerOpened,
+                  userOpened:false
+                  });
+              
+              
             }}
           />
         </div>
@@ -51,8 +55,11 @@ const Nav = ({page, pseudo, burgerOpened, setBurgerOpened, userOpened, setUserOp
             color= 'white'
             size={30}
             onClick= {()=>{
-              setBurgerOpened(false);
-              setUserOpened(!userOpened)
+              setMenuOpened({
+                  burgerOpened:false,
+                  userOpened:!menuOpened.userOpened
+                  });
+              
             }}
           />
         </div>
@@ -63,8 +70,10 @@ const Nav = ({page, pseudo, burgerOpened, setBurgerOpened, userOpened, setUserOp
               color= 'white'
               size={30}
               onClick= {()=>{
-                setBurgerOpened(false);
-                setUserOpened(false);
+                setMenuOpened({
+                  burgerOpened:false,
+                  userOpened:false
+                  });
               }}
             />
           </NavLink>
