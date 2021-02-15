@@ -17,7 +17,7 @@ function App() {
   //nom de page dans nav
   const [page,setPage]=useState('ACCUEIL');
   // nom du pseudo dans nav
-  const [pseudo, setPseudo]=useState('PSEUDO est connecté');
+  const [pseudo, setPseudo]=useState("Vous n'êtes pas connecté");
   // gestion du menu burger
     // ouverture-fermeture du menu
   const [burgerOpened, setBurgerOpened]=useState(false);
@@ -36,8 +36,12 @@ function App() {
   const [userMenu, setUserMenu]=useState(
     [
       {id:0, icon:<FaUserPlus />, text:"inscription", route:"/sign-up"},
-    ]
-  )
+    ]);
+    // user : pseudo et email
+    const [user, setUser]=useState({pseudo: 'Le pseudo', email:'mail@xxx.yyy'});
+
+    
+  
   return (
     <div className="app">
       <div className="app-burger">
@@ -57,42 +61,25 @@ function App() {
         </div>
         
         <Switch>
-          <Route 
-            exact path="/"
-            render={()=>
-              <Home setPage={setPage}/>
-            }
-          />
-          <Route 
-            exact path="/videos"
-            render={()=>
-              <Videos setPage={setPage}/>
-            }
-          />
-          <Route 
-            exact path="/search"
-            render={()=>
-              <Search setPage={setPage}/>
-            }
-          />
-          <Route 
-            exact path="/close-up"
-            render={()=>
-              <CloseUp setPage={setPage}/>
-            }
-          />
-          <Route 
-            exact path="/sign-up"
-            render={()=>
-              <SignUp setPage={setPage}/>
-            }
-          />
-          <Route 
-            exact path="/contact"
-            render={()=>
-              <Contact setPage={setPage}/>
-            }
-          />
+          <Route exact path="/" >
+            <Home setPage={setPage}/>
+          </Route>
+          <Route exact path="/videos" >
+            <Videos setPage={setPage}/>
+          </Route>
+          <Route exact path="/search" >
+            <Search setPage={setPage}/>
+          </Route>
+          <Route exact path="/close-up" >
+            <CloseUp setPage={setPage}/>
+          </Route>
+          <Route exact path="/sign-up" >
+            <SignUp setPage={setPage}/>
+          </Route>
+          <Route exact path="/contact" >
+            <Contact setPage={setPage} user={user}/>
+          </Route>
+          
         </Switch>
       </div>
       <div className="app-user">
