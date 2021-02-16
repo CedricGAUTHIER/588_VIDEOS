@@ -3,3 +3,4 @@
 %uri=http://videos.588dev.org/
 
 01_create_tables 2021-02-16T15:59:18Z "Etudiant O'clock",,, <etudiant@teleporteur> # init
+02_add_foreign_keys 2021-02-16T17:16:18Z "Etudiant O'clock",,, <etudiant@teleporteur> # with foreign keys
