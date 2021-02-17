@@ -1,0 +1,35 @@
+@import '../../styles/vars.scss';
+.thumbnails-main{
+  display:flex;
+  background-color: $blueColor50;
+  border-radius:20px;
+  border: solid 1px black;
+  margin: $gutter*2;
+  
+  &-poster{
+      width: 10%;
+      border-radius: 20px 0 0 20px;
+  }
+  
+  &-content{
+    color: $blueColor900;
+    text-align: center;
+    width: 100%;
+    &-title{
+      font-family: $fontSiteTitle;
+      font-size: $gutter*5;
+      
+    }
+    &-tag_line{
+      font-family: $fontSiteTitle;
+      font-style: italic;
+    }
+    &-release_date{
+      font-family: $fontSiteTitle;
+    }
+    &-overview{
+      text-align: left;
+      padding: $gutter;
+    }
+  }
+}

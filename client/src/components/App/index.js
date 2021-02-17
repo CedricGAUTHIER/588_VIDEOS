@@ -10,7 +10,6 @@ import CloseUp from '../CloseUp';
 import UserMenu from '../UserMenu';
 import SignUp from '../SignUp';
 import Contact from '../Contact';
-import Title from '../Header/Title'; 
 import { FaCompactDisc, FaSearch, FaLightbulb, FaUserPlus} from 'react-icons/fa';
 import axios from "axios";
 const rootURL = "http://localhost:3001";
