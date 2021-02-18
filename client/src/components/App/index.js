@@ -12,6 +12,7 @@ import SignUp from '../SignUp';
 import Contact from '../Contact';
 import { FaCompactDisc, FaSearch, FaLightbulb, FaUserPlus} from 'react-icons/fa';
 import axios from "axios";
+
 const rootURL = "http://localhost:3001";
 
 function App() {
@@ -58,8 +59,11 @@ function App() {
       }
     }
     useEffect(()=> {
+      
       fetchVideos();
+      
     } , []);
+    
   return (
     <div className="app">
             
@@ -68,7 +72,6 @@ function App() {
       </div>
       
       <div className="app-content">
-        
         
         <Switch>
           <Route exact path="/" >
@@ -123,6 +126,7 @@ function App() {
           </Route>
           
         </Switch>
+        
       </div>
       <div className="app-user">
         {menuOpened.userOpened && (<UserMenu items={userMenu} setMenuOpened={setMenuOpened} />)}
