@@ -9,6 +9,8 @@ import { TiContacts } from "react-icons/ti";
 
 
 const Nav = ({page, pseudo, menuOpened, setMenuOpened}) => {
+  let message="";
+  (pseudo==="")? (message="NON connecté"):(message=`${pseudo} est connecté`)
   
   return(
     <div className="nav">
@@ -46,7 +48,7 @@ const Nav = ({page, pseudo, menuOpened, setMenuOpened}) => {
         {page}
       </div>
       <div className="nav-pseudo">
-        {pseudo}
+        {message}
       </div>
       <div className="nav-icon-menu">
         <div className="nav-icon">

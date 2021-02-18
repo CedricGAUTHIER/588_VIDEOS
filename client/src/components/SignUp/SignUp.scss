@@ -1,22 +1,96 @@
 @import '../../styles/vars.scss';
-.burger{
+.requis{
   text-align: left;
-  
-  ul{
-    list-style: none;
-  }
-  li{
-    
-    padding-bottom: $gutter*2;
-    color: $blueColor50 ;
-    display: flex;
-  }
 }
+.sign-up{
+  &-required{
+    margin-left: 0.2em;
+    color: red;
+    font-size: 1.5em;
+    
+  }
+  &-requis{
 
-.text{
-  margin-left: $gutter;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: $blueColor50 ;
-  text-decoration: none;
+  }
+  &-form{
+    height: 100vh;
+  }
+  &-inputs{
+    display: flex;
+    justify-content: space-around;
+    &-user{
+      
+    }
+    &-password{
+      
+    }
+  }
+  &-fields{
+    display: flex;
+    flex-direction: column;
+  }
+  &-field{
+    display: flex;
+    justify-content: space-between;
+    &-checkbox{
+      display: flex;
+      justify-content: flex-start; 
+      align-items: center; 
+      
+    }
+    &-label{
+
+    }
+    &-input{
+      &-checkbox{
+      
+      }
+    }
+    
+  }
+  &-pseudo{
+    
+  }
+  &-email{
+    
+  }
+  &-password{
+    
+  }
+  &-confirm{
+    
+    &-ok{
+      background-color: rgba(29, 175, 29, 0.3);
+    }
+    &-nok{
+      background-color: rgba(223, 99, 99, 0.7);
+    }
+  }
+  &-checkbox{
+    margin: auto;
+    width:fit-content;
+  }
+  &-submit{
+    &-button{
+      background-color: $blueColor400;
+      color: $blueColor50;
+      font-weight: bold;
+      font-size: $gutter*2;
+      border: none;
+      border-radius: 15px;
+      display: flex;
+      margin: auto;
+      align-items: center;
+      justify-content: space-between;
+      padding: $gutter*2;
+      &:hover{
+        background-color:$blueColor50;
+        color: $blueColor400;
+        border: solid $blueColor400 2px;
+      }
+    }
+    &-icon{
+        margin-left: $gutter;
+      }
+  }
 }

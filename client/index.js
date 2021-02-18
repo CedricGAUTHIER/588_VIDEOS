@@ -64,6 +64,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 const visitorRouter = require('./server/router/visitorRouter');
+
 app.use(visitorRouter);
 //app.use(userRouter);
 //app.use(sortRouter);

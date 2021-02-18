@@ -4,7 +4,7 @@ import * as emailjs from "emailjs-com";
 import './Contact.scss';
 import Home from '../Home'
 import Header from '../Header';
-function Contact({pseudo, menuOpened, setMenuOpened, user}) {
+function Contact({menuOpened, setMenuOpened, user}) {
   const [sended, setSended]=useState();
   const [message, setMessage]=useState('')
   const [userContact, setUserContact]=useState({...user, message:''});
@@ -46,7 +46,7 @@ function Contact({pseudo, menuOpened, setMenuOpened, user}) {
       <div className="header">
         <Header
               page={'formulaire de contact'}
-              pseudo={pseudo}
+              pseudo={user.pseudo}
               menuOpened={menuOpened}
               setMenuOpened={setMenuOpened}
             />
@@ -61,7 +61,7 @@ function Contact({pseudo, menuOpened, setMenuOpened, user}) {
                       evt.preventDefault();
                       handleSubmit(evt.target);
                       <Home
-                        pseudo={pseudo}
+                        pseudo={user.pseudo}
                         menuOpened={menuOpened}
                         setMenuOpened={setMenuOpened}
                       />
@@ -73,7 +73,7 @@ function Contact({pseudo, menuOpened, setMenuOpened, user}) {
                                   <div className="field">
                                       <div className="field-label">
                                           <label htmlFor="pseudo">
-                                              Pseudo
+                                              Votre NOM
                                               <span className="required">
                                                   *
                                               </span>
@@ -99,7 +99,7 @@ function Contact({pseudo, menuOpened, setMenuOpened, user}) {
                                   <div className="field">
                                       <div className="field-label">
                                           <label htmlFor="email">
-                                              E - mail
+                                              Votre E - mail (pour la réponse)
                                               <span className="required">
                                                   *
                                               </span>

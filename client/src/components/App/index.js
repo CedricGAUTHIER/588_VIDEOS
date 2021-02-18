@@ -40,7 +40,7 @@ function App() {
       {id:0, icon:<FaUserPlus />, text:"inscription", route:"/sign-up"},
     ]);
     // user : pseudo et email
-    const [user, setUser]=useState({pseudo: 'Le pseudo', email:'mail@xxx.yyy'});
+    const [user, setUser]=useState({pseudo: '', email:'mail@xxx.yyy'});
     //Allvideos
     const [movies, setMovies] = useState([]);    
     
@@ -109,9 +109,12 @@ function App() {
           </Route>
           <Route exact path="/sign-up" >
             <SignUp
-                pseudo={pseudo}
                 menuOpened={menuOpened}
                 setMenuOpened={setMenuOpened}
+                user={user}
+                setUser={setUser}
+                rootURL={rootURL}
+                
                 
               />
             
