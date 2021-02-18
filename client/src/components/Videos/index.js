@@ -1,13 +1,11 @@
 import React from 'react';
 import Header from '../Header';
+import Main from '../Thumbnails/Main'
 import './Videos.scss';
 
 
 
 function Videos({pseudo, movies, menuOpened, setMenuOpened})  {
-  
-  
-  
   
   
   return (
@@ -24,7 +22,10 @@ function Videos({pseudo, movies, menuOpened, setMenuOpened})  {
 
     <div className="videos">
       {movies.map((movie)=>{
-        return <div key={movie.id}>{movie.title}</div>
+        return <Main 
+          key={movie.id}
+          movie={movie}
+        />
       })}
       
     </div>
