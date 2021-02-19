@@ -1,0 +1,43 @@
+@import '../../styles/vars.scss';
+.sign-up{
+  
+  &-success{
+    font-family: $fontSiteTitle;
+    color:black;
+    background-color:$successColorLight;
+    border-radius: 15px;
+    border: solid 1px $successColorDark;
+    padding: $gutter*0.5;
+    font-size: $gutter*3;
+    margin: $gutter; 
+    
+  }
+  &-error{
+    font-family: $fontSiteTitle;
+    color:black;
+    background-color:$errorColorLight;
+    border-radius: 15px;
+    border: solid 1px $errorColorDark;
+    padding: $gutter*0.5;
+    font-size: $gutter*3;
+    margin: $gutter; 
+  }
+  &-result{
+    animation-duration: 5s;
+    animation-name: textanim;
+    animation-delay: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes textanim{
+    0%{
+      opacity:0;
+      
+    }
+    100% {
+      opacity:1;
+      
+    }
+  }
+}

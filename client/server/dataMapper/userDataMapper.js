@@ -6,6 +6,19 @@ const saltRound=10;
 
 module.exports={
 
+    checkPseudo: async(pseudo)=>{
+        try {
+            const existPseudo = await client.query(`
+            SELECT "pseudo"
+            FROM "user"
+            WHERE "pseudo"=$1
+            `,[pseudo]);
+            
+            return existPseudo.rowCount
+        } catch (error) {
+            
+        }
+    },
     addUser: async(newUser)=>{
         try{
             const userAdded=await client.query(`
@@ -16,12 +29,6 @@ module.exports={
             console.trace(moment().format('LLLL'),error);
             Response.status(500).send(error);
         }
-        
-        
-        
-        
-        
-        
     }
 
 }

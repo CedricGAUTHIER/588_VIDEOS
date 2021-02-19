@@ -6,11 +6,18 @@ module.exports={
             const userToAdd = {
                 ...request.body,
                 type:'user',};
-            console.log(userToAdd);
-            //vérifier si l'utilisateur existe déjà
-            await userDataMapper.addUser(userToAdd);
+            //vérification de la présence du pseudo            
+            const pseudoAlreadyExist = await userDataMapper.checkPseudo(userToAdd.pseudo)
+            if (pseudoAlreadyExist===0){
+                await userDataMapper.addUser(userToAdd);
+                response.json({signup:'done'});
+            }else{
+                response.json({signup:`${userToAdd.pseudo} existe déjà`})
+            }
             
-            response.send("Utilisateur ajouté avec succès !!!");
+            
+            
+            
         }
          catch (error) {
             console.error(error);

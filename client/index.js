@@ -3,7 +3,7 @@ const port = process.env.PORT || 3000;
 const express = require('express');
 const app = express();
 const moment = require('moment');
-//const session = require('express-session');
+const session = require('express-session');
 
 //const userRouter = require('./app/router/userRouter');
 //const sortRouter = require('./app/router/sortRouter');
@@ -21,14 +21,14 @@ moment.locale('fr');
 
 
 
-//app.use(session({
-//    secret: process.env.SESSION_SECRET,
-//    resave: false,
-//    saveUninitialized: true,
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
 //    cookie: {
 //        httpOnly: true ,
 //    }
-//}));
+}));
 
 app.use((error, request, response, next) => {
     
@@ -64,9 +64,9 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 const visitorRouter = require('./server/router/visitorRouter');
-
+const testRouter = require('./server/router/testRouter')
 app.use(visitorRouter);
-//app.use(userRouter);
+app.use(testRouter);
 //app.use(sortRouter);
 //app.use(sessionRouter);
 //app.use(reviewRouter);

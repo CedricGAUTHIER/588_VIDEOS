@@ -18,7 +18,7 @@ const rootURL = "http://localhost:3001";
 function App() {
     
   // nom du pseudo dans nav
-  const [pseudo, setPseudo]=useState("Vous n'êtes pas connecté");
+  const [pseudo, setPseudo]=useState("");
   // gestion du menu burger
     // ouverture-fermeture du menu
   

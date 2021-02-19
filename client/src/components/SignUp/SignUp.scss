@@ -7,10 +7,6 @@
     margin-left: 0.2em;
     color: red;
     font-size: 1.5em;
-    
-  }
-  &-requis{
-
   }
   &-form{
     height: 100vh;
@@ -18,12 +14,6 @@
   &-inputs{
     display: flex;
     justify-content: space-around;
-    &-user{
-      
-    }
-    &-password{
-      
-    }
   }
   &-fields{
     display: flex;
@@ -36,29 +26,10 @@
       display: flex;
       justify-content: flex-start; 
       align-items: center; 
-      
+    
     }
-    &-label{
-
-    }
-    &-input{
-      &-checkbox{
-      
-      }
-    }
-    
-  }
-  &-pseudo{
-    
-  }
-  &-email{
-    
-  }
-  &-password{
-    
   }
   &-confirm{
-    
     &-ok{
       background-color: rgba(29, 175, 29, 0.3);
     }
@@ -92,5 +63,38 @@
     &-icon{
         margin-left: $gutter;
       }
+  
+  }
+  &-success{
+    font-family: $fontSiteTitle;
+    color:black;
+    background-color:$successColorLight;
+    border-radius: 15px;
+    border: solid 1px $successColorDark;
+    padding: $gutter*2;
+    font-size: $gutter*3;
+    margin: $gutter; 
+    
+  }
+  &-error{
+
+  }
+  &-result{
+    animation-duration: 5s;
+    animation-name: textanim;
+    animation-delay: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes textanim{
+    0%{
+      opacity:0;
+      transform: translateX(10vW);
+    }
+    100% {
+      opacity:1;
+      transform: translatex(0);
+    }
   }
 }
