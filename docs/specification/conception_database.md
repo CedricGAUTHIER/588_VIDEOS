@@ -58,6 +58,7 @@ pseudo|pseudo|TEXT|-|UNIQUE, NOT NULL|
 email|adresse mail|TEXT|Vérifier la validité de l’adresse|NOT NULL|
 password|mot de passe|password|création d’un type|NOT NULL|
 type|type d’utilisateur|TEXT|user ou admin|NOT NULL, DEFAULT user|
+email_alert|pour déclencher l'envoi d'un mail d'alerte|BOOLEAN|true: email envoyé à chaque connexion|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 
@@ -67,7 +68,7 @@ Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
 id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
 title|titre|TEXT|-|NOT NULL|
-tag-line|sous-titre|TEXT|-|-|
+tag_line|sous-titre|TEXT|-|-|
 release_date|date de réalisation|DATE|-|-|
 revenue|revenus générés|INT|en $|-|
 budget|budget|INT|en $|-|
@@ -99,8 +100,7 @@ created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
 id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
-type|type de support|
-TEXT|(CD - DD - USB - DVD)|NOT NULL|
+type|type de support|TEXT|(CD - DD - USB - DVD)|NOT NULL|
 name|nom du support|TEXT|-|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
@@ -188,23 +188,23 @@ movie_id|id du film|INT|Foreign key|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 
--  **VOIR**
+-  **SEE**
   
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
 id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
-user_id|id de l’utilisateur|INT|-|NOT NULL|
-movie_id|id du film|INT|-|NOT NULL|
+user_id|id de l’utilisateur|INT|Foreign key|NOT NULL|
+movie_id|id du film|INT|Foreign key|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 
--  **JOUER**
+-  **PLAY**
   
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
 id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
-actor_id|id de l’acteur|INT|-|NOT NULL|
-movie_id|id du film|INT|-|NOT NULL|
+actor_id|id de l’acteur|INT|Foreign key|NOT NULL|
+movie_id|id du film|INT|Foreign key|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 
@@ -214,7 +214,7 @@ Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
 id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
 production_company_id|id de la société de production|INT|-|NOT NULL|
-movie_id|id du film|INT|-|NOT NULL|
+movie_id|id du film|INT|Foreign key|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 
@@ -223,8 +223,8 @@ created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
 id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
-genre_id|id du genre|INT|-|NOT NULL|
-movie_id|id du film|INT|-|NOT NULL|
+genre_id|id du genre|INT|Foreign key|NOT NULL|
+movie_id|id du film|INT|Foreign key|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 
@@ -233,8 +233,8 @@ created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
 id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
-production_country_id|id du pays de production|INT|-|NOT NULL|
-movie_id|id du film|INT|-|NOT NULL|
+production_country_id|id du pays de production|INT|Foreign key|NOT NULL|
+movie_id|id du film|INT|Foreign key|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 </details>
@@ -321,7 +321,7 @@ Num|URL|Description|
 Méthode HTTP|URL|Contrôleur|Description|
 |-|-|-|-|
 POST|/api/videos|videosController (*allVideosVisitor*)|Retourne toutes les vidéos (*MOVIE*)|
-POST|/api/sign_up|userController (*signUp*)|Ajout d’ un user (*USER*)|
+POST|/api/sign-up|userController (*signUp*)|Ajout d’ un user (*USER*)|
 GET|/api/search|searchController (*searchVideosVisitor*)|Retourne les résultats de recherche|
 GET|/api/close-up|videostController (*closeUp*)|Retourne les infos d’un vidéo au hasard|
 GET|/api/contact|contactController (*SendMessage*)|Envoi un message|

@@ -1,4 +1,4 @@
-import {React} from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Nav.scss';
 import {GiHamburgerMenu} from 'react-icons/gi';
@@ -9,6 +9,8 @@ import { TiContacts } from "react-icons/ti";
 
 
 const Nav = ({page, pseudo, menuOpened, setMenuOpened}) => {
+  let messageSign="";  
+  (pseudo==="")? (messageSign="NON connecté"):(messageSign=`${pseudo} est connecté`)
   
   return(
     <div className="nav">
@@ -46,7 +48,7 @@ const Nav = ({page, pseudo, menuOpened, setMenuOpened}) => {
         {page}
       </div>
       <div className="nav-pseudo">
-        {pseudo}
+        {messageSign}
       </div>
       <div className="nav-icon-menu">
         <div className="nav-icon">

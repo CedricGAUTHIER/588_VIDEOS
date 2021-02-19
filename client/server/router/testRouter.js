@@ -1,7 +1,6 @@
 const express = require('express');
 
-const videosController = require('../controller/videosController');
-const userController = require('../controller/userController');
+const testController = require('../controller/testController');
 const router = express.Router();
 
 // Lorsque l'on a 2 méthode qui utilise la même route on peut utilisé route() afin de ne spécifier qu'une seule fois la route
@@ -11,7 +10,7 @@ au lieu de
 router.get(<route>, <getController>);
 router.post(<route>, <postControler>);
 */
-router.get('/api/videos', videosController.allVideosVisitor);
-router.post('/api/sign-up', userController.signUp);
+router.get('/test', testController.deleteUser);
+
 
 module.exports = router;
