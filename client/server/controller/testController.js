@@ -61,4 +61,12 @@ module.exports={
             console.error(error);
         }
     },
+    updateCountry: async(request,response) => {
+        
+        try {
+            await testDataMapper.updateCountry();
+        }catch (error) {
+            console.error(error);
+        }
+    },
 }

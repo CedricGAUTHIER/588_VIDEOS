@@ -223,7 +223,52 @@ module.exports={
                 
                 
             }
-            console.log("genre est à jour !!!!");
+            console.log("production_company est à jour !!!!");
+            
+
+          
+            
+        } catch (error) {
+            console.error(error);    
+        }
+
+    },
+    updateCountry: async()=>{
+        try {
+            
+            const ids= await client.query(`
+                SELECT "tmdb_id" from "movie"
+            `)
+            
+                        
+            for (const id of ids.rows) {
+                
+                let movie= await axios({
+                    method:"get",
+                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}?api_key=${ApiKey}&language=fr`
+                })
+                
+                for (let index = 0; index < movie.data.production_countries.length; index++) {
+                        console.log(`tmdb_id : ${id.tmdb_id}`)
+                        const checkCountry= await client.query(`
+                        SELECT "name"
+                        FROM "production_country"
+                        WHERE "name"=$1
+                        `,[movie.data.production_countries[index].name])
+                        if (checkCountry.rowCount === 0){
+                            await client.query(`
+                                INSERT INTO "production_country" ("name", "iso_3166")
+                                 VALUES ( $1, $2)
+                            `,[movie.data.production_countries[index].name, movie.data.production_countries[index].iso_3166_1])
+                            console.log(`${movie.data.production_countries[index].name} a été ajouté`)
+                        }else{
+                            console.log(`${movie.data.production_countries[index].name} est déjà dans la base`)
+                        }
+                    }
+                
+                
+            }
+            console.log("Les pays sont à jour !!!!");
             
 
           
