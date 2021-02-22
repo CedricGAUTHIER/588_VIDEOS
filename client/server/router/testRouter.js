@@ -13,4 +13,6 @@ router.post(<route>, <postControler>);
 router.get('/test/update_director', testController.updateDirector);
 router.get('/test/update_collection', testController.updateCollection);
 router.get('/test/update_actor', testController.updateActor);
+router.get('/test/update_genre', testController.updateGenre);
+router.get('/test/update_company', testController.updateCompany);
 module.exports = router;

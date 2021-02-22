@@ -44,5 +44,21 @@ module.exports={
          catch (error) {
             console.error(error);
         }
-    }
+    },
+    updateGenre: async(request,response) => {
+        
+        try {
+            await testDataMapper.updateGenre();
+        }catch (error) {
+            console.error(error);
+        }
+    },
+    updateCompany: async(request,response) => {
+        
+        try {
+            await testDataMapper.updateCompany();
+        }catch (error) {
+            console.error(error);
+        }
+    },
 }
