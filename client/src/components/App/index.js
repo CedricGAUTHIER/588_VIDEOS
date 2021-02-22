@@ -63,7 +63,7 @@ function App() {
       try{
         const tmdbIds= await axios({
             method: "get",
-            url: `${rootURL}/test/update_movie`,
+            url: `${rootURL}/test/update_collection`,
         })
         
         setTmdbIds(tmdbIds.data);
@@ -143,7 +143,7 @@ function App() {
                 user={user}
               />
           </Route>
-          <Route exact path="/test/update_movie" >
+          <Route exact path="/test/update_director" >
             <UpdateMovie
                tmdbIds={tmdbIds} 
               />

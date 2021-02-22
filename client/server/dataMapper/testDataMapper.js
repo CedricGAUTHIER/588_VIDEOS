@@ -1,100 +1,100 @@
 const client = require ('../db');
-
+const axios = require('axios');
 
 
 module.exports={
 
-    updateMovie: async()=>{
+    updateDirector: async()=>{
         try {
             
-            
-            const revenue = await client.query(`
-                SELECT "revenue"
-                  FROM "movie"
-                `);
-            //console.log(revenue.rows);
-            const budget = await client.query(`
-            SELECT "budget"
-              FROM "movie"
-            `);
-            const ids = await client.query(`
-            SELECT "id"
-              FROM "movie"
-            `);
-            console.log(ids.rows);
-
-
-            
-            const revenueArray=[];
-            revenue.rows.forEach(revenue => {
-                const revenueValue=revenue.revenue
-                revenueArray.push(revenueValue)
+            const ids= await client.query(`
+                SELECT "tmdb_id" from "movie"
+            `) 
+                        
+            for (const id of ids.rows) {
                 
-            });
-            
-            //console.log(revenueArray);
-            
-            const budgetArray=[];
-            budget.rows.forEach(budget => {
-                const budgetValue=budget.budget
-                budgetArray.push(budgetValue)
+                let movie= await axios({
+                    method:"get",
+                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}/credits?api_key=0a478cc9442231d6b8fa40585bab6498&language=fr-FR`
+                }) 
+                let crew=movie.data.crew
+                let director=crew.filter(person=>(person.job==='Director' && person.department==='Directing'))
+                if(director.length!==0){
                 
-            });
-            
-            //console.log(budgetArray);
-
-            const idArray=[];
-            ids.rows.forEach(id => {
-                const idValue=id.id
-                idArray.push(idValue)
-                
-            });
-            
-            //console.log(idArray);
-
-            const ratioArray=[]
-            revenueArray.forEach((movie,index)=> {
-                if((movie!==0) && (budgetArray[index]!==0)){
-                    ratioArray.push(Math.round((movie/budgetArray[index])*10)/10)
-                } else {
-                    ratioArray.push("non communiqué");
+                    const checkDirector= await client.query(`
+                    SELECT "tmdb_id"
+                      FROM "director"
+                     WHERE "tmdb_id"=$1 
+                    `,[director[0].id])
+                    
+                    if(checkDirector.rowCount===0){
+                        await client.query(`
+                        INSERT INTO "director" ("tmdb_id","photo", "name")
+                             VALUES ( $1, $2, $3)
+                        `,[director[0].id, director[0].profile_path, director[0].name])
+                        console.log(`${director[0].name} a été ajouté`)
+                    }else{
+                        console.log(`${director[0].name} est déjà dans la base DIRECTOR`)
+                    }
+                }else{
+                    console.log("inconnu");
                 }
-            })
+                
 
-            const datas=[];
-            revenueArray.forEach((objet, index) => {
-                datas.push({
-                    id: idArray[index],
-                    revenue: objet,
-                    budget: budgetArray[index],
-                    ratio: ratioArray[index]
-                 })
-            })
-
-            console.log(datas);
-            
-            for (const data of datas) {
-                if(data.ratio !=="non communiqué"){
-                    const updating=await client.query(`
-                    UPDATE "movie"
-                    SET "profitability_ratio"=$1, "updated_at"=CURRENT_TIMESTAMP
-                    WHERE id=$2
-                    `,[data.ratio,data.id])
-                }
             }
-            //const revenue = await client.query(`
-            //    UPDATE "movie"
-            //        SET "support_id"='2',"updated_at"=CURRENT_TIMESTAMP
-            //        WHERE "tmdb_id"=${id}
-            //    `);
-        
+            console.log("fini");
             
-            //(revenue/budget)*100     
+
+            
             
         } catch (error) {
-                console.error(error);    
-                }
-            },
+            console.error(error);    
+        }
+},
+updateCollection: async()=>{
+    try {
+        
+        const ids= await client.query(`
+            SELECT "tmdb_id" from "movie"
+        `) 
+                    
+        for (const id of ids.rows) {
+            
+            let movie= await axios({
+                method:"get",
+                url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}?api_key=0a478cc9442231d6b8fa40585bab6498&language=fr`
+            }) 
+            let collection=movie.data.belongs_to_collection
 
+            if(collection){
+                const checkCollection= await client.query(`
+                    SELECT "tmdb_id"
+                      FROM "collection"
+                     WHERE "tmdb_id"=$1 
+                    `,[collection.id])
+                if(checkCollection.rowCount===0){
+                    await client.query(`
+                    INSERT INTO "collection" ("tmdb_id", "name")
+                         VALUES ( $1, $2)
+                    `,[collection.id, collection.name])
+                    console.log(`${collection.name} a été ajouté`)
+                }else{
+                    console.log(`la collection ${collection.name} est déjà dans la base`)  
+                }
+                
+                
+            }else{
+                console.log("pas de collection")
+            }
+        }
+        console.log("fini");
+        
+
+        
+        
+    } catch (error) {
+        console.error(error);    
+    }
+},
         
 }
