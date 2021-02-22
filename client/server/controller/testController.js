@@ -29,5 +29,20 @@ module.exports={
          catch (error) {
             console.error(error);
         }
+    },
+    updateActor: async(request,response) => {
+        
+        try {
+            //const tmdb_ids = await testDataMapper.updateMovie();
+            await testDataMapper.updateActor();
+            //console.log("dans controller",tmdb_ids)
+
+            
+            //response.send(tmdb_ids);
+            
+        }
+         catch (error) {
+            console.error(error);
+        }
     }
 }

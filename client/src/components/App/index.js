@@ -63,7 +63,7 @@ function App() {
       try{
         const tmdbIds= await axios({
             method: "get",
-            url: `${rootURL}/test/update_collection`,
+            url: `${rootURL}/test/update_actor`,
         })
         
         setTmdbIds(tmdbIds.data);
