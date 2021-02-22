@@ -4,7 +4,7 @@ import * as emailjs from "emailjs-com";
 import './Contact.scss';
 import Home from '../Home'
 import Header from '../Header';
-function Contact({menuOpened, setMenuOpened, user}) {
+const Contact=({menuOpened, setMenuOpened, user})=> {
   const [sended, setSended]=useState();
   const [message, setMessage]=useState('')
   const [userContact, setUserContact]=useState({...user, message:''});

@@ -10,7 +10,7 @@ au lieu de
 router.get(<route>, <getController>);
 router.post(<route>, <postControler>);
 */
-router.get('/test', testController.deleteUser);
+router.get('/test/update_movie', testController.updateMovie);
 
 
 module.exports = router;

@@ -5,7 +5,7 @@ import Message from './message';
 import './SignUp.scss';
 import {FaEye, FaEyeSlash, FaUserPlus} from 'react-icons/fa';
 
-function SignUp({menuOpened, setMenuOpened, user, setUser, rootURL}) {
+const SignUp=({menuOpened, setMenuOpened, user, setUser, rootURL})=> {
   const [toggleEye, setToggleEye] = useState(true);
   const [toggleEyeConfirm, setToggleEyeConfirm] = useState(true);
   const [password,setPassword] = useState('');

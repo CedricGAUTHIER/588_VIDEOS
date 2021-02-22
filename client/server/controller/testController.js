@@ -1,15 +1,14 @@
 const testDataMapper = require ('../dataMapper/testDataMapper');
 module.exports={
-    deleteUser: async() => {
+    updateMovie: async(request,response) => {
         
         try {
-            testDataMapper.deleteUser(30);
+            //const tmdb_ids = await testDataMapper.updateMovie();
+            await testDataMapper.updateMovie();
+            //console.log("dans controller",tmdb_ids)
 
             
-            
-
-            
-            
+            //response.send(tmdb_ids);
             
         }
          catch (error) {
