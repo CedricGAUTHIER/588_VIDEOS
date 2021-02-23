@@ -10,7 +10,7 @@ import CloseUp from '../CloseUp';
 import UserMenu from '../UserMenu';
 import SignUp from '../SignUp';
 import Contact from '../Contact';
-import UpdateMovie from '../Test/UpdateMovie';
+import AddMovie from '../Test/AddMovie';
 import { FaCompactDisc, FaSearch, FaLightbulb, FaUserPlus} from 'react-icons/fa';
 import axios from "axios";
 
@@ -45,6 +45,7 @@ function App() {
     //Allvideos
     const [movies, setMovies] = useState([]);    
     const[tmdbIds,setTmdbIds] = useState([]);
+    const[tmdbId,setTmdbId]=useState("11101");
     const fetchVideos = async () => {
       try{
         const allVideos= await axios({
@@ -63,7 +64,7 @@ function App() {
       try{
         const tmdbIds= await axios({
             method: "get",
-            url: `${rootURL}/test/update_country`,
+            url: `${rootURL}/test/update_movie`,
         })
         
         setTmdbIds(tmdbIds.data);
@@ -143,10 +144,25 @@ function App() {
                 user={user}
               />
           </Route>
-          <Route exact path="/test/update_director" >
-            <UpdateMovie
-               tmdbIds={tmdbIds} 
-              />
+          <Route exact path="/test/update_movie/support_id" >
+            <div>
+              Mise à jour de "movie" - "support_ID"
+            </div>
+            
+          </Route>
+          <Route exact path="/test/update_movie/support_id" >
+            <div>
+              Mise à jour de "movie" - "support_ID"
+            </div>
+            
+          </Route>
+          <Route exact path="/test/update_movie/add_movie" >
+            <AddMovie
+              tmdbId={tmdbId}
+              setTmdbId={setTmdbId}
+              rootURL={rootURL}
+            />
+            
           </Route>
         </Switch>
         

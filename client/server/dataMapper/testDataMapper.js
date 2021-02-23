@@ -2,102 +2,82 @@ require('dotenv').config();
 const client = require ('../db');
 const axios = require('axios');
 const ApiKey = process.env.TMDB_API_KEY;
+const moment = require('moment');
+const tools=require('./tools')
+moment.locale('fr');
 
 module.exports={
-
-    updateDirector: async()=>{
-        try {
+    addMovieById: async (id)=>{
+        
+        try{
+            let result= await axios({
+                method:"get",
+                url:`https://api.themoviedb.org/3/movie/${id}?api_key=${ApiKey}&language=fr`
+            })
             
-            const ids= await client.query(`
-                SELECT "tmdb_id" from "movie"
-            `) 
-                        
-            for (const id of ids.rows) {
-                
-                let movie= await axios({
-                    method:"get",
-                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}/credits?api_key=${ApiKey}&language=fr-FR`
-                }) 
-                let crew=movie.data.crew
-                let director=crew.filter(person=>(person.job==='Director' && person.department==='Directing'))
-                if(director.length!==0){
-                
-                    const checkDirector= await client.query(`
-                    SELECT "tmdb_id"
-                      FROM "director"
-                     WHERE "tmdb_id"=$1 
-                    `,[director[0].id])
-                    
-                    if(checkDirector.rowCount===0){
-                        await client.query(`
-                        INSERT INTO "director" ("tmdb_id","photo", "name")
-                             VALUES ( $1, $2, $3)
-                        `,[director[0].id, director[0].profile_path, director[0].name])
-                        console.log(`${director[0].name} a été ajouté`)
-                    }else{
-                        console.log(`${director[0].name} est déjà dans la base DIRECTOR`)
-                    }
-                }else{
-                    console.log("inconnu");
-                }
-                
-
+            const datas={...result.data};
+            //const releaseDate=moment(datas.release_date).format("YYYY");
+            
+            let profitabilityRatio;
+            if((datas.revenue===0) || (datas.budget===0)){
+                profitabilityRatio=0;
+            } else {
+                profitabilityRatio=Math.round((datas.revenue/datas.budget)*10)/10;
             }
-            console.log("fini");
+            const supportId=6;
+            let collectionId
+            if( datas.belongs_to_collection){
+                collectionId=datas.belongs_to_collection.id
+                
+                await tools.updateCollection(id)
+            }
             
+            
+            const directorId = await tools.updateDirector(id)
+            
+            await client.query(`
+            INSERT INTO "movie" ("title","tag_line","release_date","revenue",
+                "budget","runtime","poster","overview","for_adult","tmdb_id",
+                "profitability_ratio","support_id","director_id","collection_id")
+            VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
+            `,[datas.title,datas.tagline,datas.release_date,datas.revenue,datas.budget,datas.runtime,datas.poster_path,datas.overview,datas.adult,datas.id,profitabilityRatio,supportId,directorId,collectionId]) 
+            
+            await tools.updateOrigin(id, datas.production_countries);
+            await tools.updateType(id, datas.genres);
+            await tools.updateProduction(id,datas.production_companies);
+            await tools.updatePlay(id);
+            console.log(`${datas.title} a été ajouté dans movie`)
 
             
-            
+
+
+
+
         } catch (error) {
             console.error(error);    
         }
     },
-    updateCollection: async()=>{
-        try {
-            
-            const ids= await client.query(`
-                SELECT "tmdb_id" from "movie"
-            `) 
-                        
-            for (const id of ids.rows) {
-                
-                let movie= await axios({
-                    method:"get",
-                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}?api_key=${ApiKey}&language=fr`
-                }) 
-                let collection=movie.data.belongs_to_collection
-
-                if(collection){
-                    const checkCollection= await client.query(`
-                        SELECT "tmdb_id"
-                        FROM "collection"
-                        WHERE "tmdb_id"=$1 
-                        `,[collection.id])
-                    if(checkCollection.rowCount===0){
-                        await client.query(`
-                        INSERT INTO "collection" ("tmdb_id", "name")
-                            VALUES ( $1, $2)
-                        `,[collection.id, collection.name])
-                        console.log(`${collection.name} a été ajouté`)
-                    }else{
-                        console.log(`la collection ${collection.name} est déjà dans la base`)  
-                    }
-                    
-                    
-                }else{
-                    console.log("pas de collection")
-                }
+    
+    
+    updateMovieSupportID: async ()=>{
+        try{
+            const ids=[45,44,43,41,42,47,49,50,48]
+            for (const id of ids){
+                await client.query(`
+                    DELETE FROM "movie"
+                     WHERE "id" = $1
+                `,[id])
+                console.log(`mise à jour de ${id}`);
             }
-            console.log("fini");
-            
-
-            
-            
+            console.log("support_id est à jour");
         } catch (error) {
             console.error(error);    
         }
+
     },
-    updateActor: async()=>{
+    
+    
+    updateActor: async ()=>{
         try {
             
             const ids= await client.query(`
@@ -143,7 +123,7 @@ module.exports={
         }
 
     },
-    updateGenre: async()=>{
+    updateGenre: async ()=>{
         try {
             
             const ids= await client.query(`
@@ -188,7 +168,7 @@ module.exports={
         }
 
     },
-    updateCompany: async()=>{
+    updateCompany: async ()=>{
         try {
             
             const ids= await client.query(`
@@ -233,7 +213,7 @@ module.exports={
         }
 
     },
-    updateCountry: async()=>{
+    updateCountry: async ()=>{
         try {
             
             const ids= await client.query(`
@@ -277,5 +257,48 @@ module.exports={
             console.error(error);    
         }
 
-    },        
+    },
+    updateOrigin: async ()=>{
+        try {
+            
+            const ids= await client.query(`
+                SELECT "tmdb_id" from "movie"
+            `)
+            
+                        
+            for (const id of ids.rows) {
+                
+                let movie= await axios({
+                    method:"get",
+                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}?api_key=${ApiKey}&language=fr`
+                })
+                let countries=movie.data.production_countries;
+                
+                
+
+                for (const country of countries) {
+                    let countryIso = await client.query(`
+                        SELECT "id","iso_3166"
+                        FROM "production_country"
+                        WHERE "iso_3166"=$1
+                    `,[country.iso_3166_1])
+                    let countryID = countryIso.rows[0].id
+                    await client.query(`
+                    INSERT INTO "origin" ("production_country_id","movie_id")
+                         VALUES (${countryID},${id.tmdb_id})
+                    `)
+                    console.log(`{${countryID},${id.tmdb_id}} a été ajouté à ORIGIN`)
+                }
+                
+            }
+            console.log("ORIGIN est à jour !!!!");
+            
+
+          
+            
+        } catch (error) {
+            console.error(error);    
+        }
+
+    },          
 }
