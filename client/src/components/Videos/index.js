@@ -5,7 +5,7 @@ import './Videos.scss';
 
 
 
-function Videos({pseudo, movies, menuOpened, setMenuOpened})  {
+const Videos=({pseudo, movies, menuOpened, setMenuOpened})=>  {
   
   
   return (

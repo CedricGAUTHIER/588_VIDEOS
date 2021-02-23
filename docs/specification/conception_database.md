@@ -123,7 +123,7 @@ created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
   
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
-id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
+tmdb_id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
 name|nom du genre|TEXT|-|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
@@ -132,7 +132,7 @@ created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
   
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
-id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
+tmdb_id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
 name|nom du genre|TEXT|-|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
@@ -141,7 +141,7 @@ created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
   
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
-id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
+tmdb_id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
 logo|chemin du logo|TEXT|-|-|
 iso_3166|code ISO du pays|TEXT|2 caractères (US - FR ...) permet d’obtenir le drapeau|NOT NULL|
 name|nom de la société de production|TEXT|-|NOT NULL|
@@ -162,7 +162,7 @@ created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
   
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
-id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
+tmdb_id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
 name|nom de l‘acteur|TEXT|-|NOT NULL|
 character|nom du personnage|TEXT|-|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
@@ -172,7 +172,7 @@ created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
   
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
-id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
+tmdb_id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
 photo|photo du réalisateur|TEXT|-|-|
 name|nom du réalisateur|TEXT|-|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
@@ -203,7 +203,7 @@ created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
 id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
-actor_id|id de l’acteur|INT|Foreign key|NOT NULL|
+actor_id|tmdb_id de l’acteur|INT|Foreign key|NOT NULL|
 movie_id|id du film|INT|Foreign key|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
@@ -213,7 +213,7 @@ created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
 id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
-production_company_id|id de la société de production|INT|-|NOT NULL|
+production_company_id|tmdb_id de la société de production|INT|-|NOT NULL|
 movie_id|id du film|INT|Foreign key|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
@@ -223,7 +223,7 @@ created_at|date de création|TIMESTAMPTZ|-|NOT NULL|
 Nom|Description|Type|Commentaire|Contraintes|
 -|-|-|-|-|
 id|PK|INT|Clé primaire|UNIQUE, NOT NULL|
-genre_id|id du genre|INT|Foreign key|NOT NULL|
+genre_id|tmdb_id du genre|INT|Foreign key|NOT NULL|
 movie_id|id du film|INT|Foreign key|NOT NULL|
 updated_at|date de mise à jour|TIMESTAMPTZ|la création n’est pas une mise à jour|-|
 created_at|date de création|TIMESTAMPTZ|-|NOT NULL|

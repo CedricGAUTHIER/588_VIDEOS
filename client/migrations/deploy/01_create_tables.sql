@@ -5,7 +5,7 @@ BEGIN;
 DROP TABLE IF EXISTS "support";
 CREATE TABLE "support" (
     "id" SERIAL PRIMARY KEY,
-    "type" TEXT UNIQUE NOT NULL,
+    "type" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "updated_at" TIMESTAMPTZ ,
     "created_at" TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
@@ -13,7 +13,7 @@ CREATE TABLE "support" (
 
 DROP TABLE IF EXISTS "genre";
 CREATE TABLE "genre" (
-    "id" SERIAL PRIMARY KEY,
+    "tmdb_id" INT UNIQUE NOT NULL,
     "name" TEXT NOT NULL,
     "updated_at" TIMESTAMPTZ ,
     "created_at" TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
@@ -21,7 +21,7 @@ CREATE TABLE "genre" (
 
 DROP TABLE IF EXISTS "collection";
 CREATE TABLE "collection" (
-    "id" SERIAL PRIMARY KEY,
+    "tmdb_id" INT UNIQUE NOT NULL,
     "name" TEXT NOT NULL,
     "updated_at" TIMESTAMPTZ ,
     "created_at" TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
@@ -29,7 +29,7 @@ CREATE TABLE "collection" (
 
 DROP TABLE IF EXISTS "production_company";
 CREATE TABLE "production_company" (
-    "id" SERIAL PRIMARY KEY,
+    "tmdb_id" INT UNIQUE NOT NULL,
     "logo" TEXT,
     "iso_3166" TEXT NOT NULL,
     "name" TEXT NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE "production_country" (
 
 DROP TABLE IF EXISTS "actor";
 CREATE TABLE "actor" (
-    "id" SERIAL PRIMARY KEY,
+    "tmdb_id" INT UNIQUE NOT NULL,
     "name" TEXT NOT NULL,
     "character" TEXT NOT NULL,
     "updated_at" TIMESTAMPTZ ,
@@ -57,7 +57,7 @@ CREATE TABLE "actor" (
 
 DROP TABLE IF EXISTS "director";
 CREATE TABLE "director" (
-    "id" SERIAL PRIMARY KEY,
+    "tmdb_id" INT UNIQUE NOT NULL,
     "photo" TEXT,
     "name" TEXT NOT NULL,
     "updated_at" TIMESTAMPTZ ,

@@ -4,3 +4,4 @@
 
 01_create_tables 2021-02-16T15:59:18Z "Etudiant O'clock",,, <etudiant@teleporteur> # init
 02_add_foreign_keys 2021-02-16T17:16:18Z "Etudiant O'clock",,, <etudiant@teleporteur> # with foreign keys
+03_updating_tables 2021-02-19T16:44:21Z "Etudiant O'clock",,, <etudiant@teleporteur> # update to be ok with new version of 588_videos
