@@ -1,8 +1,11 @@
 import React from 'react';
 import Header from '../Header';
+import Details from '../Thumbnails/Details'
 import './CloseUp.scss';
 
-function CloseUp({pseudo, menuOpened, setMenuOpened}) {
+
+function CloseUp({pseudo, menuOpened, setMenuOpened, closeUpMovie}) {
+  
   
   return (
     <div >
@@ -15,7 +18,14 @@ function CloseUp({pseudo, menuOpened, setMenuOpened}) {
             />
       </div>
       <div className="CloseUp">
-        Page CloseUp
+        <Details
+          movie={closeUpMovie}
+          
+        />
+        
+        
+        
+
       </div>
     </div>
     

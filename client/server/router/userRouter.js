@@ -1,6 +1,4 @@
 const express = require('express');
-
-const videosController = require('../controller/videosController');
 const userController = require('../controller/userController');
 const router = express.Router();
 
@@ -11,7 +9,7 @@ au lieu de
 router.get(<route>, <getController>);
 router.post(<route>, <postControler>);
 */
-router.get('/api/videos', videosController.allVideosVisitor);
+
 router.post('/api/sign-up', userController.signUp);
 
 module.exports = router;

@@ -52,7 +52,7 @@ module.exports={
             
                 let movie= await axios({
                     method:"get",
-                    url:`https://api.themoviedb.org/3/movie/${id}?api_key=${ApiKey}&language=fr`
+                    url:`https://api.themoviedb.org/3/movie/${id}?api_key=${ApiKey}&language=fr-FR`
                 }) 
                 let collection=movie.data.belongs_to_collection
 

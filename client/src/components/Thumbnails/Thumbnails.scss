@@ -6,6 +6,7 @@
   border: solid 1px black;
   margin: $gutter*2;
   
+  
   &-poster{
       width: 10%;
       border-radius: 20px 0 0 20px;
@@ -32,4 +33,56 @@
       padding: $gutter;
     }
   }
+  &:hover{
+    box-shadow: rgba(36, 37, 56, 0.5) 0px 15px 40px -7px;
+  }
 }
+
+.thumbnails-details{
+  display:flex;
+  flex-direction: column;
+  background-color: $blueColor50;
+  border-radius:20px;
+  border: solid 1px black;
+  margin: $gutter*2;
+  &-header{
+    display:flex;
+    &-image{
+      width: 10%;
+      border-radius: 20px 0 0 20px;
+    }
+    &-content{
+      display:flex;
+      flex-direction: column;
+      &-headtitle{
+        display:flex;
+        
+        &-titles{
+          display:flex;
+          flex-direction: column;
+        }
+        &-infos{
+          display:flex;
+          flex-direction: column;
+        }
+      }
+      &-overview{
+
+      }
+    }
+  }
+  &-content{
+    display:flex;
+    flex-direction: column;
+    &-profit{
+      display:flex;
+    }
+    &-genres{
+
+    }
+    &-production{
+
+    }
+  }
+}
+
