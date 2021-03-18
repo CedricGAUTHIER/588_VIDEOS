@@ -4,11 +4,13 @@ import Details from '../Thumbnails/Details'
 import './CloseUp.scss';
 
 
-function CloseUp({pseudo, menuOpened, setMenuOpened, closeUpMovie}) {
+const CloseUp=({pseudo, menuOpened, setMenuOpened, closeUpMovie})=> {
   
   
   return (
+    
     <div >
+    
       <div className="header">
         <Header
               page={'la proposition du moment'}
@@ -18,7 +20,9 @@ function CloseUp({pseudo, menuOpened, setMenuOpened, closeUpMovie}) {
             />
       </div>
       <div className="CloseUp">
+      
         <Details
+          
           movie={closeUpMovie}
           
         />

@@ -16,8 +16,8 @@ import axios from "axios";
 
 const rootURL = "http://localhost:3001";
 
-function App() {
-    
+const App=()=> {
+  
   // nom du pseudo dans nav
   const [pseudo, setPseudo]=useState("");
   // gestion du menu burger
@@ -43,9 +43,17 @@ function App() {
     // user : pseudo et email
     const [user, setUser]=useState({pseudo: '', email:'mail@xxx.yyy'});
     //Allvideos
+    
     const [movies, setMovies] = useState([]);    
+    
+
     const[tmdbId,setTmdbId]=useState("");
     const [closeUpMovie, setCloseUpMovie]=useState({})
+    
+
+
+
+
     const fetchVideos = async () => {
       try{
         const randomInArray=(array)=> (Math.floor(Math.random()*(array.length)))
@@ -70,9 +78,10 @@ function App() {
             url: `${rootURL}/api/video/${randomMovieTmdbId}`,
         })
         const movieDetails= randomMovie.data;
-      
+        
 
         setCloseUpMovie(movieDetails);
+        
       }
       catch(error){
         console.error(error);
@@ -80,11 +89,12 @@ function App() {
     };
     
     useEffect(()=> {
-      
+      console.log("useEffect");
       fetchVideos();
+      //test();
       
       
-    } , []);
+    },[]);
     
     
   return (
@@ -99,15 +109,15 @@ function App() {
         <Switch>
           <Route exact path="/" >
             <Home
-              pseudo={pseudo}
+              pseudo={user.pseudo}
               menuOpened={menuOpened}
               setMenuOpened={setMenuOpened}
             />
           </Route>
           <Route exact path="/videos" >
-          
+          {console.log("videos dans App",movies)}
             <Videos
-              pseudo={pseudo}
+              pseudo={user.pseudo}
               menuOpened={menuOpened}
               setMenuOpened={setMenuOpened}
               movies={movies}
@@ -115,7 +125,7 @@ function App() {
           </Route>
           <Route exact path="/search" >
             <Search
-              pseudo={pseudo}
+              pseudo={user.pseudo}
               menuOpened={menuOpened}
               setMenuOpened={setMenuOpened}
               
@@ -123,12 +133,13 @@ function App() {
           </Route>
           <Route exact path="/close-up" >
             
-
+          
             <CloseUp
-                pseudo={pseudo}
+                pseudo={user.pseudo}
                 menuOpened={menuOpened}
                 setMenuOpened={setMenuOpened}
                 closeUpMovie={closeUpMovie}
+                
                                
               />
             
@@ -147,7 +158,6 @@ function App() {
           </Route>
           <Route exact path="/contact" >
             <Contact
-                pseudo={pseudo}
                 menuOpened={menuOpened}
                 setMenuOpened={setMenuOpened}
                 user={user}

@@ -110,13 +110,7 @@ module.exports={
             actors,
             countries,
             companies,
-    }
-    
-
-
-
-
-    console.log("movieDetails :", movieDetails)    
+        }
         return movieDetails
     },
 
