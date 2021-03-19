@@ -228,9 +228,10 @@
         &-list{
           display: flex;
           flex-direction: column;
+          list-style-type: none;
         }
         &-item{
-          display: inline;
+          
           display: flex;
           justify-content: space-evenly;
           &-name{
@@ -243,6 +244,7 @@
           &-is{
             width: 30%;
             padding: $gutter;
+            font-style: italic;
           }
           &-character{
             width: 30%;
@@ -256,10 +258,85 @@
         }
       }
       &-director{
-        border: blue 1px solid;
+        
+        &-name{
+          padding: $gutter;
+          font-weight: bold;
+          text-align: center;
+          text-transform: uppercase;
+        }
       }
     }
     &-production{
+      display:flex;
+      background-color: $blueColor200;
+      border-radius: 20px;
+      margin: $gutter*2;
+      padding: $gutter*2;
+      justify-content: space-evenly;
+      h3{
+        text-decoration: underline;
+        font-family: $fontSiteTitle;
+        text-transform: uppercase;
+        font-size: $gutter*3;
+        color:$blueColor900;
+
+      }
+      &-countries{
+        &-list{
+          display: flex;
+          flex-direction: column;
+          list-style-type: none;
+          text-align: left;
+          
+          margin:auto;
+          padding: $gutter;
+          
+        }
+        &-item{
+          
+          &-name{
+            
+            width: 100%;
+            padding: $gutter;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            margin: auto;
+          }
+          
+        }
+      }
+      &-companies{
+        
+        &-list{
+          list-style-type: none;
+          display: flex;
+          flex-direction: column;
+        }
+        &-item{
+          align-items: center;
+          display:flex;
+          justify-content: space-evenly;
+          width: 100%;
+          &-image{
+            margin: auto;
+            max-width: 25%;
+            padding: $gutter;
+            height: 30px;
+          }
+          &-name{
+            padding: $gutter;
+            font-weight: bold;
+            text-align: left;
+            text-transform: uppercase;
+          }
+          &-flag{
+            padding: $gutter;
+
+          }
+        }
+      }
 
     }
   }

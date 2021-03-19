@@ -1,12 +1,13 @@
 import React from 'react';
 import './Thumbnails.scss';
 import Moment from 'react-moment';
-
+import FlagIcon from '../FlagIcon';
 
 const Details=({movie})=>  {
-  const imageURL=`https://image.tmdb.org/t/p/w500${movie.poster}`;
+  const rootURLImage = "https://image.tmdb.org/t/p/w500";
+  const imageURL=`${rootURLImage}${movie.poster}`;
   console.log({movie})
-  console.log(movie.budget.toLocaleString())
+  
   const ratioClass=(movie.profitability_ratio > 1)? "success":"fail";
   return (
     <div className="thumbnails-details">
@@ -119,45 +120,66 @@ const Details=({movie})=>  {
           </div>
           
           <div className="thumbnails-details-content-credit-director">
-            Réalisateur:
-          </div>
-          <div className="thumbnails-details-content-credit-director-name">
-            {movie.director.name}
+            <h3>
+              Réalisateur:
+            </h3>
+            <div className="thumbnails-details-content-credit-director-name">
+              {movie.director.name}
+            </div>
           </div>
         </div>
         <div className="thumbnails-details-content-production">
-          production:
           <div className="thumbnails-details-content-production-countries">
-            Pays d'origine:
+            <h3>
+              Pays d'origine:  
+            </h3>
+            <ul className="thumbnails-details-content-production-countries-list">
+              {movie.countries.map((country)=>{
+                return(
+                  <li
+                    key={country.id}
+                    className="thumbnails-details-content-production-countries-item"
+                  >
+                    <FlagIcon code={country.iso_3166.toLowerCase()} size='lg' />
+                    <span className="thumbnails-details-content-production-countries-item-name">
+                      
+                      {country.name}
+                    </span>
+                  </li>
+                )
+              })}
+            </ul>
           </div>
-            
-          <ul className="thumbnails-details-content-production-countries-list">
-            {movie.countries.map((country)=>{
-              return(
-                <li
-                  key={country.id}
-                  className="thumbnails-details-content-production-countries-item"
-                >
-                  {country.name}
-                </li>
-              )
-            })}
-          </ul>
           <div className="thumbnails-details-content-production-companies">
-            produit par:
-          </div>
+            <h3>
+              produit par:
+            </h3>
+          
             <ul className="thumbnails-details-content-production-companies-list">
               {movie.companies.map((company)=>{
                 return(
                   <li
                     key={company.tmdb_id}
-                    className="thumbnails-details-content-production-coumpanes-item"
+                    className="thumbnails-details-content-production-companies-item"
                   >
-                    {company.name}
+                    <span className="thumbnails-details-content-production-companies-item-flag">
+                      <FlagIcon code={company.iso_3166.toLowerCase()} size='lg' />
+                    </span>
+                     
+                    <span className="thumbnails-details-content-production-companies-item-name">
+                      {company.name}
+                    </span>
+                    <img
+                      className="thumbnails-details-content-production-companies-item-image"
+                      src={`${rootURLImage}${company.logo}`}
+                      alt={`logo of ${company.name}`}
+                    />
+                    
                   </li>
                 )
               })}
             </ul>
+          </div>
         </div>   
       </div>  
     </div>
