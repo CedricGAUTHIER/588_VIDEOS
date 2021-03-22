@@ -6,12 +6,12 @@ const AddMovie=({tmdbId,setTmdbId,rootURL}) => {
     const handleSubmit=async({tmdb_id})=>{
       
       if (tmdb_id.value!==""){
-        const tmdbIdToSearch=await axios({
+        await axios({
           method:"post",
           url:`${rootURL}/api/add_movie_by_id`,
           data: {id:tmdb_id.value}
         })
-        //console.log(tmdbIdToSearch)
+        
       }
     }
    

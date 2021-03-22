@@ -3,15 +3,23 @@
   text-align: center;
   display: flex;
   flex-direction: row;
+  position: relative;
   
   &-burger{
     background-color: $blueColor700;
+    z-index: 1;
+    margin-top: $gutter*28;
+    opacity:0.9;
+    border-radius: 10%/50%;
     
   }
   &-user{
     background-color: $blueColor700;
     text-align: center;
-    
+    z-index: 1;
+    margin-top: $gutter*28;
+    opacity:0.9;
+    border-radius: 10%/50%;
   }
   
   &-content{
@@ -19,6 +27,7 @@
     flex-direction: column;
     width: 100%;
     background-color: $blueColor100;
+    position: absolute;
   }
   &-header{
     

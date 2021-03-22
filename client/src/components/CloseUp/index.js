@@ -1,11 +1,16 @@
 import React from 'react';
 import Header from '../Header';
+import Details from '../Thumbnails/Details'
 import './CloseUp.scss';
 
-function CloseUp({pseudo, menuOpened, setMenuOpened}) {
+
+const CloseUp=({pseudo, menuOpened, setMenuOpened, closeUpMovie})=> {
+  
   
   return (
+    
     <div >
+    
       <div className="header">
         <Header
               page={'la proposition du moment'}
@@ -15,7 +20,16 @@ function CloseUp({pseudo, menuOpened, setMenuOpened}) {
             />
       </div>
       <div className="CloseUp">
-        Page CloseUp
+      
+        <Details
+          
+          movie={closeUpMovie}
+          
+        />
+        
+        
+        
+
       </div>
     </div>
     

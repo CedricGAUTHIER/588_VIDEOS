@@ -63,9 +63,11 @@ app.use((error, request, response, next) => {
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-const visitorRouter = require('./server/router/visitorRouter');
+const videoRouter = require('./server/router/videoRouter');
+const userRouter = require('./server/router/userRouter');
 const testRouter = require('./server/router/testRouter')
-app.use(visitorRouter);
+app.use(videoRouter);
+app.use(userRouter);
 app.use(testRouter);
 //app.use(sortRouter);
 //app.use(sessionRouter);

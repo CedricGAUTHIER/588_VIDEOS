@@ -16,8 +16,8 @@ import axios from "axios";
 
 const rootURL = "http://localhost:3001";
 
-function App() {
-    
+const App=()=> {
+  
   // nom du pseudo dans nav
   const [pseudo, setPseudo]=useState("");
   // gestion du menu burger
@@ -43,43 +43,59 @@ function App() {
     // user : pseudo et email
     const [user, setUser]=useState({pseudo: '', email:'mail@xxx.yyy'});
     //Allvideos
+    
     const [movies, setMovies] = useState([]);    
-    const[tmdbIds,setTmdbIds] = useState([]);
-    const[tmdbId,setTmdbId]=useState("11101");
+    
+
+    const[tmdbId,setTmdbId]=useState("");
+    const [closeUpMovie, setCloseUpMovie]=useState({})
+    
+
+
+
+
     const fetchVideos = async () => {
       try{
+        const randomInArray=(array)=> (Math.floor(Math.random()*(array.length)))
+        
         const allVideos= await axios({
             method: "get",
             url: `${rootURL}/api/videos`,
         })
+        const movies= allVideos.data;
+        setMovies(movies);
+
+        const ids=[];
+        movies.forEach(movie => {
+          ids.push(movie.tmdb_id)
+          
+        });
         
-        setMovies(allVideos.data);
-        console.log('allvideos',allVideos.data);
-      }
-      catch(error){
-        console.error(error);
-      }
-    }
-    const fetchTmdbIds = async () => {
-      try{
-        const tmdbIds= await axios({
+        const randomMovieTmdbId=ids[randomInArray(ids)];
+                
+        const randomMovie= await axios({
             method: "get",
-            url: `${rootURL}/test/update_movie`,
+            url: `${rootURL}/api/video/${randomMovieTmdbId}`,
         })
+        const movieDetails= randomMovie.data;
         
-        setTmdbIds(tmdbIds.data);
-        console.log('tmdbIds',tmdbIds.data);
+
+        setCloseUpMovie(movieDetails);
+        
       }
       catch(error){
         console.error(error);
       }
-    }
+    };
+    
     useEffect(()=> {
-      
+      console.log("useEffect");
       fetchVideos();
-      fetchTmdbIds();
+      //test();
       
-    } , []);
+      
+    },[]);
+    
     
   return (
     <div className="app">
@@ -93,15 +109,15 @@ function App() {
         <Switch>
           <Route exact path="/" >
             <Home
-              pseudo={pseudo}
+              pseudo={user.pseudo}
               menuOpened={menuOpened}
               setMenuOpened={setMenuOpened}
             />
           </Route>
           <Route exact path="/videos" >
-          
+          {console.log("videos dans App",movies)}
             <Videos
-              pseudo={pseudo}
+              pseudo={user.pseudo}
               menuOpened={menuOpened}
               setMenuOpened={setMenuOpened}
               movies={movies}
@@ -109,18 +125,22 @@ function App() {
           </Route>
           <Route exact path="/search" >
             <Search
-              pseudo={pseudo}
+              pseudo={user.pseudo}
               menuOpened={menuOpened}
               setMenuOpened={setMenuOpened}
               
             />
           </Route>
           <Route exact path="/close-up" >
+            
+          
             <CloseUp
-                pseudo={pseudo}
+                pseudo={user.pseudo}
                 menuOpened={menuOpened}
                 setMenuOpened={setMenuOpened}
+                closeUpMovie={closeUpMovie}
                 
+                               
               />
             
           </Route>
@@ -138,7 +158,6 @@ function App() {
           </Route>
           <Route exact path="/contact" >
             <Contact
-                pseudo={pseudo}
                 menuOpened={menuOpened}
                 setMenuOpened={setMenuOpened}
                 user={user}

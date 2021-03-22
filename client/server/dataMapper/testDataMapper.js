@@ -12,7 +12,7 @@ module.exports={
         try{
             let result= await axios({
                 method:"get",
-                url:`https://api.themoviedb.org/3/movie/${id}?api_key=${ApiKey}&language=fr`
+                url:`https://api.themoviedb.org/3/movie/${id}?api_key=${ApiKey}&language=fr-FR`
             })
             
             const datas={...result.data};
@@ -135,7 +135,7 @@ module.exports={
                 
                 let movie= await axios({
                     method:"get",
-                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}?api_key=${ApiKey}&language=fr`
+                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}?api_key=${ApiKey}&language=fr-FR`
                 })
                 
                 for (let index = 0; index < movie.data.genres.length; index++) {
@@ -180,7 +180,7 @@ module.exports={
                 
                 let movie= await axios({
                     method:"get",
-                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}?api_key=${ApiKey}&language=fr`
+                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}?api_key=${ApiKey}&language=fr-FR`
                 })
                 
                 for (let index = 0; index < movie.data.production_companies.length; index++) {
@@ -225,7 +225,7 @@ module.exports={
                 
                 let movie= await axios({
                     method:"get",
-                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}?api_key=${ApiKey}&language=fr`
+                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}?api_key=${ApiKey}&language=fr-FR`
                 })
                 
                 for (let index = 0; index < movie.data.production_countries.length; index++) {
@@ -270,7 +270,7 @@ module.exports={
                 
                 let movie= await axios({
                     method:"get",
-                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}?api_key=${ApiKey}&language=fr`
+                    url:`https://api.themoviedb.org/3/movie/${id.tmdb_id}?api_key=${ApiKey}&language=fr-FR`
                 })
                 let countries=movie.data.production_countries;
                 

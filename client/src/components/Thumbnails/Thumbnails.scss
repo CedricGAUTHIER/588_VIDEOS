@@ -6,6 +6,7 @@
   border: solid 1px black;
   margin: $gutter*2;
   
+  
   &-poster{
       width: 10%;
       border-radius: 20px 0 0 20px;
@@ -32,4 +33,312 @@
       padding: $gutter;
     }
   }
+  &:hover{
+    box-shadow: rgba(36, 37, 56, 0.5) 0px 15px 40px -7px;
+  }
 }
+
+.thumbnails-details{
+  display:flex;
+  flex-direction: column;
+  background-color: $blueColor50;
+  border-radius:20px;
+  border: solid 1px black;
+  margin: $gutter*2;
+  &-header{
+    display:flex;
+    &-image{
+      width: 17%;
+      border-radius: 20px;
+      margin: $gutter*2;
+    }
+    &-content{
+      
+      display:flex;
+      flex-direction: column;
+      &-headtitle{
+        color: $blueColor900;
+        display:flex;
+        justify-content: center;
+        &-titles{
+          display:flex;
+          flex-direction: column;
+          flex-grow: 2;
+          padding-left: $gutter*2;
+          background-color: $blueColor200;
+          border-radius: 20px;
+          margin: $gutter*2;
+          &-title{
+            font-family: $fontSiteTitle;
+            font-size: $gutter*5;
+            text-align: center;
+            font-weight: bold;
+          }
+          &-tag_line{
+            font-family: $fontSiteTitle;
+            font-style: italic;
+            font-size: $gutter*3;
+          }
+          &-release_date{
+            font-family: $fontSiteTitle;
+          }
+        }
+        &-infos{
+          display:flex;
+          flex-direction: column;
+          text-align: right;
+          padding-right: $gutter*2;
+          font-family: $fontSiteTitle;
+          background-color: $blueColor200;
+          margin: $gutter*2;
+          border-radius: 20px;
+          padding: $gutter;
+          &-runtime{
+            display: flex;
+            align-items: baseline;
+            text-align: center;
+            
+            &-title{
+              padding: $gutter*2;
+              padding-left: 0;
+              text-decoration: underline;
+              width: 50%;
+              text-align: right;
+              &-p{
+                width: 50%;
+                padding: $gutter*3;
+                padding-left: 0;
+                text-align: left;
+                &-em{
+                  padding-right: $gutter*1;
+                  font-size: $gutter*3;
+                  
+                }
+              }
+              
+
+            }
+          }
+
+        }
+      }
+      &-overview{
+        text-align: left;
+        padding: $gutter*2;
+        background-color: $blueColor200;
+        border-radius: 20px;
+        margin: $gutter*2;
+        color: $blueColor900;
+        font-weight: bold;
+      }
+    }
+  }
+  &-content{
+    display:flex;
+    flex-direction: column;
+    
+    &-profit{
+      background-color: $blueColor200;
+      border-radius: 20px;
+      margin: $gutter*2;
+      display:flex;
+      padding: $gutter*2;
+      justify-content: space-between;
+      font-weight: bold;
+
+      &-budget{
+        background-color: rgba(197, 149, 241,0.5);
+        border-radius: 10px;
+        padding: $gutter;
+        
+
+      }
+      &-revenue{
+        background-color: rgba(197, 149, 241,0.7);
+        border-radius: 10px;
+        padding: $gutter;
+
+      }
+      &-ratio{
+        
+        &-success{
+          background-color: $successColorDark;
+          border-radius: 10px;
+          padding: $gutter;
+          color: $successColorLight;
+          
+        }
+        &-fail{
+          background-color: $errorColorDark;
+          border-radius: 10px;
+          padding: $gutter;
+          color: $errorColorLight;
+          
+        }
+      }
+    }
+    &-genres{
+      display:flex;
+      flex-direction: column;
+      background-color: $blueColor200;
+      border-radius: 20px;
+      margin: $gutter*2;
+      padding: $gutter*2;
+      
+      h3{
+        text-decoration: underline;
+        font-family: $fontSiteTitle;
+        text-transform: uppercase;
+        font-size: $gutter*3;
+        color:$blueColor900;
+
+      }
+      
+      &-list{
+        display: flex;
+        justify-content: space-evenly;
+      }
+      &-item{
+        display: inline;
+        border-radius: 10px;
+        padding: $gutter;
+        background-color: $blueColor900;
+        color: $blueColor50;
+        font-weight: bold;
+        
+      }
+    }
+    &-credit{
+      display:flex;
+      background-color: $blueColor200;
+      border-radius: 20px;
+      margin: $gutter*2;
+      padding: $gutter*2;
+      justify-content: space-evenly;
+      h3{
+        text-decoration: underline;
+        font-family: $fontSiteTitle;
+        text-transform: uppercase;
+        font-size: $gutter*3;
+        color:$blueColor900;
+
+      }
+      &-actors{
+        
+        &-list{
+          display: flex;
+          flex-direction: column;
+          list-style-type: none;
+        }
+        &-item{
+          
+          display: flex;
+          justify-content: space-evenly;
+          &-name{
+            width: 30%;
+            padding: $gutter;
+            font-weight: bold;
+            text-align: left;
+            text-transform: uppercase;
+          }
+          &-is{
+            width: 30%;
+            padding: $gutter;
+            font-style: italic;
+          }
+          &-character{
+            width: 30%;
+            padding: $gutter;
+            font-weight: bold;
+            font-style: italic;
+            text-align: left;
+            text-transform: uppercase;
+
+          }
+        }
+      }
+      &-director{
+        
+        &-name{
+          padding: $gutter;
+          font-weight: bold;
+          text-align: center;
+          text-transform: uppercase;
+        }
+      }
+    }
+    &-production{
+      display:flex;
+      background-color: $blueColor200;
+      border-radius: 20px;
+      margin: $gutter*2;
+      padding: $gutter*2;
+      justify-content: space-evenly;
+      h3{
+        text-decoration: underline;
+        font-family: $fontSiteTitle;
+        text-transform: uppercase;
+        font-size: $gutter*3;
+        color:$blueColor900;
+
+      }
+      &-countries{
+        &-list{
+          display: flex;
+          flex-direction: column;
+          list-style-type: none;
+          text-align: left;
+          
+          margin:auto;
+          padding: $gutter;
+          
+        }
+        &-item{
+          
+          &-name{
+            
+            width: 100%;
+            padding: $gutter;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            margin: auto;
+          }
+          
+        }
+      }
+      &-companies{
+        
+        &-list{
+          list-style-type: none;
+          display: flex;
+          flex-direction: column;
+        }
+        &-item{
+          align-items: center;
+          display:flex;
+          justify-content: space-evenly;
+          width: 100%;
+          &-image{
+            margin: auto;
+            max-width: 25%;
+            padding: $gutter;
+            height: 30px;
+          }
+          &-name{
+            padding: $gutter;
+            font-weight: bold;
+            text-align: left;
+            text-transform: uppercase;
+          }
+          &-flag{
+            padding: $gutter;
+
+          }
+        }
+      }
+
+    }
+  }
+}
+

@@ -7,6 +7,7 @@
   }
   li{
     padding-bottom: $gutter;
+    padding-right: 40px;
     display: flex;
   }
   &-title{
@@ -21,7 +22,15 @@
 .text{
   margin: $gutter;
   margin-left: $gutter/2;
+  
   text-transform: uppercase;
-  color: $blueColor50 ;
+  color: #ffffff ;
   text-decoration: none;
+&:hover{
+  text-decoration: underline;
+  font-size: $gutter*2.5;
+  font-weight: bold;
+  opacity: 1;
 }
+}
+
