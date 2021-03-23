@@ -1,10 +1,13 @@
 @import '../../styles/vars.scss';
+body{
+  background-color: $blueColor100;
+}
 .app {
   text-align: center;
   display: flex;
   flex-direction: row;
   position: relative;
-  
+  background-color: $blueColor100;
   &-burger{
     background-color: $blueColor700;
     z-index: 1;

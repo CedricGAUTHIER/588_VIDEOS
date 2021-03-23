@@ -294,7 +294,7 @@
           
         }
         &-item{
-          
+          padding: $gutter;
           &-name{
             
             width: 100%;
@@ -330,6 +330,7 @@
             font-weight: bold;
             text-align: left;
             text-transform: uppercase;
+            width: 50%;
           }
           &-flag{
             padding: $gutter;
@@ -340,5 +341,16 @@
 
     }
   }
+}
+.goto{
+  background-color: $blueColor200;
+  border-radius: 20px;
+  margin: auto;
+  margin-bottom: $gutter*2;
+  padding: $gutter*2;
+  font-family: $fontSiteTitle;
+  text-transform: uppercase;
+  font-size: $gutter*2;
+  color:$blueColor900;
 }
 

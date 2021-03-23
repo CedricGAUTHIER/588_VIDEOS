@@ -1,22 +1,103 @@
 @import '../../styles/vars.scss';
-.burger{
-  text-align: left;
-  
-  ul{
-    list-style: none;
-  }
-  li{
-    
-    padding-bottom: $gutter*2;
-    color: $blueColor50 ;
+
+
+.search{
+  &-criteria{
+    border: 1px solid $blueColor900;
+    background-color: $blueColor50;
+    margin: $gutter*2;
+    border-radius:20px;
     display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+    
+    &-label{
+      padding: $gutter*2;
+      padding-bottom:0;
+      font-family: $fontSiteTitle;
+      font-size: $gutter*3;
+      color: $blueColor900;
+    }
+    &-select{
+      margin: $gutter*2;
+      &-select{
+        padding: $gutter*1;
+        font-family: $fontSiteTitle;
+        font-size: $gutter*2;
+        color: $blueColor50;
+        border-radius:20px;
+        background-color: $blueColor900;
+        font-weight: bold;
+        
+      }
+    }
+    
+  }
+  &-results{
+    &-number{
+      font-family: $fontSiteTitle;
+      color: $blueColor900;
+      font-weight: bold;
+      font-size: $gutter*3;
+      
+    }
+
+  }
+  &-search{
+    &-title{
+      border: 1px solid $blueColor900;
+      background-color: $blueColor50;
+      margin: $gutter*2;
+      border-radius:20px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      &-input{
+        
+      }
+      &-buttons{
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+  
+}
+.button{
+  &-all{
+    padding: $gutter*1;
+    font-family: $fontSiteTitle;
+    font-size: $gutter*2;
+    color: $blueColor200;
+    border-radius:20px;
+    background-color: $blueColor900;
+    font-weight: bold;
+    margin: $gutter*2;
+    transition: background-color 2s, color 2s;
+    
+    &:hover{
+      color: $blueColor900;
+      background-color: $blueColor200;
+    }
+  }
+  
+  &-previous{
+    padding: $gutter*1;
+    font-family: $fontSiteTitle;
+    font-size: $gutter*2;
+    color: $blueColor900;
+    border-radius:20px;
+    background-color: $blueColor200;
+    font-weight: bold;
+    margin: $gutter*2;
+    transition: background-color 2s, color 2s;
+    &:hover{
+      color: $blueColor200;
+      background-color: $blueColor900;
+    }
+
   }
 }
 
-.text{
-  margin-left: $gutter;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: $blueColor50 ;
-  text-decoration: none;
-}
+

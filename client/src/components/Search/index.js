@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../Header';
+import Title from './Title'
 import './Search.scss';
 
-function Search({pseudo, menuOpened, setMenuOpened}) {
-  
+
+function Search({pseudo, menuOpened, setMenuOpened, searchCriteria, movies, rootURL, previousMovies, setPreviousMovies}) {
+  const [criteria, setCriteria]=useState("");
   return (
-    <div >
+    <div className="main">
       <div className="header">
         <Header
               page={'recherche'}
@@ -15,8 +17,48 @@ function Search({pseudo, menuOpened, setMenuOpened}) {
             />
       </div>
       <div className="search">
-        SEARCH
+        <div className="search-criteria">
+          <div className="search-criteria-label">
+            <label htmlFor="search-criteria">
+              Critère de recherche
+            </label> 
+          </div>
+          <div className="search-criteria-select">  
+            <select
+              className="search-criteria-select-select"
+              name="search-criteria"
+              onChange={(evt)=>{
+                setCriteria(evt.target.value);
+                
+              }}  
+            >
+              {searchCriteria.map(criteria=>(
+                <option
+                  key={`${criteria.value}`}
+                  value={`${criteria.value}`}
+                >
+                  {criteria.text}
+                </option>
+              ))
+              }
+            </select>
+          </div>
+        </div>
+          
+        {
+        (criteria==="title")&&(
+          <Title
+            movies={movies}
+            rootURL={rootURL}
+            previousMovies={previousMovies}
+            setPreviousMovies={setPreviousMovies}
+          />
+          
+        )
+      } 
       </div>
+      
+        
     </div>
   );
 }

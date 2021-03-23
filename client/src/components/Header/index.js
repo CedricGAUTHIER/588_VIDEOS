@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from './Title';
 import Nav from './Nav';
-
+import './Header.scss';
 
 function Header({page, pseudo, menuOpened, setMenuOpened}) {
   
