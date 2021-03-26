@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../Header';
-import Title from './Title'
+import Title from './Title';
+import Year from './Year';
 import './Search.scss';
 
 
@@ -55,7 +56,16 @@ function Search({pseudo, menuOpened, setMenuOpened, searchCriteria, movies, root
           />
           
         )
-      } 
+      }
+      {(criteria==="year")&&(
+          <Year
+            movies={movies}
+            rootURL={rootURL}
+            previousMovies={previousMovies}
+            setPreviousMovies={setPreviousMovies}
+          />
+          
+        ) }
       </div>
       
         

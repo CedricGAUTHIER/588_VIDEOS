@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Moment from 'react-moment';
 import './Search.scss';
 import axios from "axios";
 import Details from '../Thumbnails/Details';
@@ -90,7 +89,7 @@ function Title({movies,rootURL,previousMovies, setPreviousMovies}) {
               setResultsDetails(resultsDetailsByDate)
             }}
           >
-            Rechercher sur tous les titres
+            Rechercher sur toutes les vidéos
           </button>
           {(previousMovies.length>0)&&(
             <button

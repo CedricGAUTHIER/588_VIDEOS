@@ -2,6 +2,8 @@
 
 
 .search{
+  background-color: $blueColor100;
+  height: 100vh;
   &-criteria{
     border: 1px solid $blueColor900;
     background-color: $blueColor50;
@@ -53,9 +55,7 @@
       display: flex;
       justify-content: space-evenly;
       align-items: center;
-      &-input{
-        
-      }
+      
       &-buttons{
         display: flex;
         flex-direction: column;
@@ -100,4 +100,97 @@
   }
 }
 
+
+
+.option{
+  border: 1px solid $blueColor900;
+  background-color: $blueColor50;
+  margin: $gutter*2;
+  border-radius:20px;
+  
+  
+  &-form{
+    display: flex;
+    text-align: center;
+  justify-content: space-evenly;
+    &-criterias{
+      background-color: $blueColor200;
+      margin: $gutter*2;
+      border-radius:20px;
+      display: flex;
+      flex-direction: column;
+      h3{
+        padding: $gutter*2;
+        font-family: $fontSiteTitle;
+        font-size: $gutter*3;
+        color: $blueColor900;
+        
+      }
+      &-criteria{
+        padding:$gutter*1;
+        padding-left: $gutter*2;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        input{
+          padding: $gutter*1;
+          height:$gutter*2;
+          width:$gutter*2;
+          
+        }
+        label{
+          margin: 0 $gutter*1;
+        }
+        select{
+          font-size: $gutter*2;
+          color: $blueColor200;
+          border-radius:20px;
+          background-color: $blueColor900;
+          font-weight: bold;
+          padding:$gutter*0.5; 
+        }
+      }
+      
+      
+    }
+    &-scope-button{
+      
+      background-color: $blueColor200;
+      margin: $gutter*2;
+      border-radius:20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      &-scope{
+        
+        display: flex;
+        justify-content: space-between;
+        padding: $gutter*3;
+        align-items: baseline;
+        &-text{
+          padding: 0 $gutter*3;
+          margin: 0 $gutter*2 ;
+          font-weight: bold;
+        }
+      }
+      &-button{
+
+      }
+    }
+  }
+  
+}
+.choose{
+  font-size: $gutter*2;
+  color: $blueColor900;
+  border-radius:20px;
+  border: $blueColor900 solid 2px;
+  font-weight: bold;
+  padding:$gutter;
+  font-style: italic; 
+
+}
+.notChoose{
+  color: $blueColor900;
+}
 

@@ -186,7 +186,7 @@ const Details=({movie})=>  {
           
         </div>
         <div className="goto">
-            <a href="#">Retour haut de page</a>
+            <a href="#top">Retour haut de page</a>
           </div>   
       </div>  
     </div>
