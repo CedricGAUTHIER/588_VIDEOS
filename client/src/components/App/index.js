@@ -20,6 +20,7 @@ const App=()=> {
   
   // nom du pseudo dans nav
   const [pseudo, setPseudo]=useState("");
+  const [previousMovies,setPreviousMovies]=useState([]);
   // gestion du menu burger
     // ouverture-fermeture du menu
   
@@ -49,7 +50,19 @@ const App=()=> {
 
     const[tmdbId,setTmdbId]=useState("");
     const [closeUpMovie, setCloseUpMovie]=useState({})
-    
+    const [searchCriteria,setSearchCriteria]=useState([
+      {value:"",text:"Choisir un critère de recherche"},
+      {value:"title",text:"Recherche par titre"},
+      {value:"year",text:"Recherche par année"},
+      {value:"collection",text:"Recherche par collection"},
+      {value:"runtime",text:"Recherche par durée"},
+      {value:"profitability-ratio",text:"Recherche par coefficient de profitabilité"},
+      {value:"genre",text:"Recherche par genre"},
+      {value:"actor",text:"Recherche par acteur"},
+      {value:"director",text:"Recherche par réalisateur"},
+      {value:"country",text:"Recherche par pays d'origine"},
+      {value:"company",text:"Recherche par société de production"},
+    ])
 
 
 
@@ -128,7 +141,11 @@ const App=()=> {
               pseudo={user.pseudo}
               menuOpened={menuOpened}
               setMenuOpened={setMenuOpened}
-              
+              searchCriteria={searchCriteria}
+              movies={movies}
+              rootURL={rootURL}
+              previousMovies={previousMovies}
+              setPreviousMovies={setPreviousMovies}
             />
           </Route>
           <Route exact path="/close-up" >

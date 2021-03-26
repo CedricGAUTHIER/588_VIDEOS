@@ -111,6 +111,7 @@ module.exports={
             countries,
             companies,
         }
+        console.log(movieDetails);
         return movieDetails
     },
 

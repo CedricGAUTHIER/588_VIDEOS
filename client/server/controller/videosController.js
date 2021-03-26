@@ -12,9 +12,10 @@ module.exports={
     },
     videoById: async (request, response) => {
         const id= request.params.id;
+        
         try{
             const movieDetails= await videosDataMapper.getMovieDetailsById(id);
-            
+            console.log("dans controller", movieDetails)
             response.send(movieDetails)
         }
         catch (error) {
