@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import Header from '../Header';
 import Title from './Title';
 import Year from './Year';
+import Collection from './Collection';
 import './Search.scss';
 
 
-function Search({pseudo, menuOpened, setMenuOpened, searchCriteria, movies, rootURL, previousMovies, setPreviousMovies}) {
+function Search({pseudo, menuOpened, setMenuOpened, searchCriteria, movies, rootURL, previousMovies, setPreviousMovies, collections}) {
   const [criteria, setCriteria]=useState("");
   return (
     <div className="main">
@@ -63,6 +64,16 @@ function Search({pseudo, menuOpened, setMenuOpened, searchCriteria, movies, root
             rootURL={rootURL}
             previousMovies={previousMovies}
             setPreviousMovies={setPreviousMovies}
+          />
+          
+        ) }
+        {(criteria==="collection")&&(
+          <Collection
+            movies={movies}
+            rootURL={rootURL}
+            previousMovies={previousMovies}
+            setPreviousMovies={setPreviousMovies}
+            collections={collections}
           />
           
         ) }

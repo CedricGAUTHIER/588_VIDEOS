@@ -157,6 +157,7 @@ const Details=({movie})=>  {
           
             <ul className="thumbnails-details-content-production-companies-list">
               {movie.companies.map((company)=>{
+                
                 return(
                   <li
                     key={company.tmdb_id}
@@ -170,12 +171,12 @@ const Details=({movie})=>  {
                     <span className="thumbnails-details-content-production-companies-item-name">
                       {company.name}
                     </span>
-                    
-                    <img
+                    {(company.logo) && (<img
                       className="thumbnails-details-content-production-companies-item-image"
                       src={`${rootURLImage}${company.logo}`}
                       alt={`logo inconnu`}
-                    />
+                    />)}
+                    
                     
                   </li>
                 )

@@ -89,15 +89,12 @@ function Year({movies,rootURL,previousMovies, setPreviousMovies}) {
           results.push(detail)
         }
       }
-      console.log (results)     
-      
-
     }
+
     for (const result of results){
       await fetchDetail(result.tmdb_id)
     }
-    
-    
+        
     setPreviousMovies(resultsDetails);
     
   }
@@ -118,11 +115,10 @@ function Year({movies,rootURL,previousMovies, setPreviousMovies}) {
           > 
       <div className="option-form">
       <div className="option-form-criterias">
-          <div className="option-form-criterias-title">
-            <h3>
-                Choisissez une option de recherche
-            </h3>
-          </div>
+          <h3>
+              Choisissez une option de recherche
+          </h3>
+          
           <div className="option-form-criterias-criteria">
             <input
               type="radio"

@@ -12,5 +12,5 @@ router.post(<route>, <postControler>);
 */
 router.get('/api/videos', videosController.allVideosVisitor);
 router.get('/api/video/:id', videosController.videoById);
-
+router.get('/api/collection/:id', videosController.collectionById);
 module.exports = router;

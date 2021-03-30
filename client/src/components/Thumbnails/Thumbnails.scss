@@ -43,8 +43,8 @@
   flex-direction: column;
   background-color: $blueColor50;
   border-radius:20px;
-  border: solid 1px black;
-  margin: $gutter*2;
+  border: solid 1px $blueColor900;
+  
   &-header{
     display:flex;
     &-image{
