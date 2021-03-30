@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Radio } from 'semantic-ui-react';
+import { FaSearch} from 'react-icons/fa';
 import './Search.scss';
 import axios from "axios";
 import Details from '../Thumbnails/Details';
@@ -10,6 +12,9 @@ function Title({movies,rootURL,previousMovies, setPreviousMovies}) {
   const [allMovies]=useState(movies);
   const [resultsDetails,setResultsDetails]=useState([]);
   const [loading, setLoading]=useState(false);
+  const [toggleSearchScope,setToggleSearchScope]=useState(false);
+  const allVideosClass = (!toggleSearchScope)? "option-form-scope-button-scope-text choose":"option-form-scope-button-scope-text notChoose"
+  const previousVideosClass = (toggleSearchScope)? "option-form-scope-button-scope-text choose":"option-form-scope-button-scope-text notChoose"
   const fetchDetail= async (id) => {
     let resultFetchDetail=resultsDetails;
     try{
@@ -25,8 +30,9 @@ function Title({movies,rootURL,previousMovies, setPreviousMovies}) {
     }
 
   }
-  const filterMovies= async (filter) => {
-    const results=filter.filter(movie=>movie.title.toUpperCase().includes(title.toUpperCase()));
+  const filterMovies= async (scope) => {
+    const scopeMovies = (scope)?(previousMovies):(allMovies);
+    const results=scopeMovies.filter(movie=>movie.title.toString().toUpperCase().includes(title.toString().toUpperCase()));
               setResultsDetails([]);
               for (const result of results){
                 
@@ -37,75 +43,68 @@ function Title({movies,rootURL,previousMovies, setPreviousMovies}) {
               setPreviousMovies(resultsDetails);
               setTitle("");
   };
-  const releaseDate= (datasArray) => {
-    let results = [];
-    const compare= (a,b)=>(a-b);
-    
-    for (const data of datasArray){
-      const year=data.release_date.split('-');
-      results.push(year[0])
-    }
-    
-    return(results.sort(compare))
-
-  }
+  
   
 
 
   return (
-    <div className="search-search"> 
-      <div className="search-search-title">
-        <div className="search-search-title-input">
-          <input
-            type="text"
-            name="search-title"
-            placeholder="saisir un titre"
-            value={title}
-            onChange={(event)=>{
-              setTitle(event.target.value);
-              setResultsDetails([]);
-              
-            }}
-          />
-        </div>
-        <div className="search-search-title-buttons">
-          <button
-            
-            className="button-all"
-            onClick={async ()=>{
-              setLoading(true);
-              await filterMovies(allMovies);
-              setLoading(false);
-              
-              const datesSorted = releaseDate(resultsDetails);
-              let resultsDetailsByDate = [];
-              for (const date of datesSorted){
-                const resultWithDate=  resultsDetails.filter(result=> result.release_date.split('-')[0] === date)
-                resultsDetailsByDate.push(resultWithDate[0])
+    <div className="option">
+      <form
+        name="search-by-title"
+        onSubmit={async(event)=>{
+            event.preventDefault();
+            setLoading(true);
+            await filterMovies(toggleSearchScope)
+            setLoading(false);
+          }}
+      >
+        <div className="option-form">
+          <div className="option-form-criterias-criteria-text">
+            <input
+              type="text"
+              name="search-title"
+              placeholder="saisir un titre"
+              value={title}
+              onChange={(event)=>{
+                setTitle(event.target.value);
+                setResultsDetails([]);
                 
-
-              }
-              
-              setResultsDetails(resultsDetailsByDate)
-            }}
-          >
-            Rechercher sur toutes les vidéos
-          </button>
-          {(previousMovies.length>0)&&(
-            <button
-              className="button-previous"
-              onClick={async ()=>{
-              setLoading(true);
-              await filterMovies(previousMovies);
-              setLoading(false);
-            }}>
-            Rechercher sur les résultats précédents
-          </button>  )
-
-          }
-          
-        </div>
-      </div>
+              }}
+            />
+          </div>
+          <div className="option-form-scope-button">
+            <div className="option-form-scope-button-scope">
+              <div className={allVideosClass}>
+                Recherche sur toutes les vidéos
+              </div>
+              <Radio 
+                toggle
+                onChange={()=>{
+                  setToggleSearchScope(!toggleSearchScope)
+                  
+                  
+                }}
+              />
+              <div className={previousVideosClass}>
+                  Recherche sur les résultats précédents
+              </div>
+            </div>
+            <div className="option-form-scope-button-button">
+              <button
+                  type="submit"
+                  className="button-all"
+                  onClick={()=>{
+                    setResultsDetails([])
+                  }}
+              >
+                <FaSearch /> Rechercher
+              </button>
+            </div>
+            
+        
+          </div>
+        </div>  
+      </form>
       {(loading) && (
         <Loading />
       )}
@@ -119,13 +118,9 @@ function Title({movies,rootURL,previousMovies, setPreviousMovies}) {
               return <Details key={result.id} movie={result}/>
             }
           )}
-            
-            
-            
           </div>
         </div>        
       )}
-      
       {(resultsDetails.length===1) && (
         <div className="search-results">
           <p className="search-results-number">
@@ -133,13 +128,9 @@ function Title({movies,rootURL,previousMovies, setPreviousMovies}) {
           </p>  
           <div className="search-results-movies">
             
-            {resultsDetails.map(result=>{
-              
-              return <Details key={result.id} movie={result}/>
-            })}
-            
-            
-            
+            {resultsDetails.map(result=>(
+              <Details key={result.id} movie={result}/>
+            ))}
           </div>
         </div>        
       )}
@@ -154,15 +145,10 @@ function Title({movies,rootURL,previousMovies, setPreviousMovies}) {
               
               return <Details key={result.id} movie={result}/>
             })}
-            
-            
-            
           </div>
         </div>        
       )}
-            
-       
-      </div>
+    </div>
 );
 }
 

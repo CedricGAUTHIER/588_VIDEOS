@@ -42,6 +42,8 @@
       color: $blueColor900;
       font-weight: bold;
       font-size: $gutter*3;
+      padding: $gutter*2;
+      margin-bottom: 0;
       
     }
 
@@ -107,18 +109,23 @@
   background-color: $blueColor50;
   margin: $gutter*2;
   border-radius:20px;
-  
+  padding: $gutter*2;
   
   &-form{
     display: flex;
     text-align: center;
-  justify-content: space-evenly;
+    justify-content: space-evenly;
+    border: solid 1px $blueColor900;
+    border-radius:20px;
+    padding: $gutter*2;
+
     &-criterias{
       background-color: $blueColor200;
       margin: $gutter*2;
       border-radius:20px;
       display: flex;
       flex-direction: column;
+      
       h3{
         padding: $gutter*2;
         font-family: $fontSiteTitle;
@@ -132,11 +139,10 @@
         display: flex;
         justify-content: flex-start;
         align-items: baseline;
-        input{
+        input[radio]{
           padding: $gutter*1;
           height:$gutter*2;
           width:$gutter*2;
-          
         }
         label{
           margin: 0 $gutter*1;
@@ -149,13 +155,49 @@
           font-weight: bold;
           padding:$gutter*0.5; 
         }
+        &-text{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height:40%;
+          margin: auto;
+          padding:$gutter*2;
+          background-color: $blueColor200;
+          border-radius:20px;
+          flex-direction: column;
+
+        }
       }
       
       
     }
+    &-items{
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+      text-align: left;
+      margin-left: 0;
+      padding-left: 0;
+      overflow-y: scroll;
+      height:$gutter*26;
+    }
+    &-item{
+      border: $blueColor200 solid 2px;
+      border-style: groove;
+      border-radius:20px;
+      padding: $gutter*0.5;
+      background-color: $blueColor100;
+      margin-bottom: $gutter;
+      color: $blueColor900;
+      font-weight: bold;
+    }
+    &-item:hover{
+      color: $blueColor100;
+      background-color: $blueColor900;
+    }
     &-scope-button{
       
-      background-color: $blueColor200;
+      background-color: $blueColor100;
       margin: $gutter*2;
       border-radius:20px;
       display: flex;

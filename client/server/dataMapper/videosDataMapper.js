@@ -111,9 +111,16 @@ module.exports={
             countries,
             companies,
         }
-        console.log(movieDetails);
+        
         return movieDetails
     },
-
-
+    getCollectionNameById: async(id)=>{
+        const name = await client.query(`
+        SELECT "name" 
+        FROM "collection"
+        where "tmdb_id"=$1 
+        `,[id]);
+        console.log(name.rows[0].name);
+        return name.rows[0].name
+    },
 }

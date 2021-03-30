@@ -15,13 +15,23 @@ module.exports={
         
         try{
             const movieDetails= await videosDataMapper.getMovieDetailsById(id);
-            console.log("dans controller", movieDetails)
             response.send(movieDetails)
         }
         catch (error) {
             console.error(error);
         }
 
+
+    },
+    collectionById: async (request, response) => {
+        const tmdbId = request.params.id;
+        try{
+            const collectionName = await videosDataMapper.getCollectionNameById(tmdbId);
+            response.send(collectionName)
+        }
+        catch (error) {
+            console.error(error);
+        }
 
     }
 }

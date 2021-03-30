@@ -46,7 +46,7 @@ const App=()=> {
     //Allvideos
     
     const [movies, setMovies] = useState([]);    
-    
+    const [collections, setCollections]=useState([]);
 
     const[tmdbId,setTmdbId]=useState("");
     const [closeUpMovie, setCloseUpMovie]=useState({})
@@ -79,11 +79,30 @@ const App=()=> {
         setMovies(movies);
 
         const ids=[];
+        const collectionIds=[];
         movies.forEach(movie => {
           ids.push(movie.tmdb_id)
-          
+          collectionIds.push(movie.collection_id)
         });
         
+        const collectionIdsWithoutDuplicates=[];
+        for (const id of collectionIds){
+          let found=collectionIdsWithoutDuplicates.filter(element=> element===id);
+          if (found.length===0 && id){
+            collectionIdsWithoutDuplicates.push(id)
+          }
+        }
+
+        const collectionsObject=[];
+        for (const id of collectionIdsWithoutDuplicates){
+          const name=await axios({
+            method:'get',
+            url:`${rootURL}/api/collection/${id}`
+          })
+          collectionsObject.push({id:id, name:name.data});
+        }
+        setCollections(collectionsObject);
+
         const randomMovieTmdbId=ids[randomInArray(ids)];
                 
         const randomMovie= await axios({
@@ -94,6 +113,14 @@ const App=()=> {
         
 
         setCloseUpMovie(movieDetails);
+
+
+
+
+
+
+
+
         
       }
       catch(error){
@@ -146,6 +173,8 @@ const App=()=> {
               rootURL={rootURL}
               previousMovies={previousMovies}
               setPreviousMovies={setPreviousMovies}
+              collections={collections}
+
             />
           </Route>
           <Route exact path="/close-up" >
