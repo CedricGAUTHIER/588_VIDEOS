@@ -2,7 +2,11 @@ import React from 'react';
 import './Loading.scss';
 function Loading() {
     return (
-      <div className="spinner"/>
+      <div>
+        <div className="spinner"/>
+        <p> recherche en cours</p>
+      </div>
+      
   );
 }
 

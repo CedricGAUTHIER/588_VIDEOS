@@ -162,7 +162,6 @@ function Year({movies,rootURL,previousMovies, setPreviousMovies}) {
               name="year-decade"
               onChange={(evt)=>{
                 setYearToSearch(evt.target.value);
-                console.log("onchange",evt.target.value);
               }}  
             >
             {decades.map(year=>(
