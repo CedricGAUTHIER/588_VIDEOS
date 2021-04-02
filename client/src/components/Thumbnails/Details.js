@@ -6,9 +6,19 @@ import FlagIcon from '../FlagIcon';
 const Details=({movie})=>  {
   const rootURLImage = "https://image.tmdb.org/t/p/w500";
   const imageURL=`${rootURLImage}${movie.poster}`;
-  
-  
-  const ratioClass=(movie.profitability_ratio > 1)? "success":"fail";
+  const ratio=movie.profitability_ratio;
+  let ratioClass="";
+  if(ratio<=1){
+    ratioClass="fail";
+  }else if((ratio>1) && (ratio<=10)){
+    ratioClass="success";
+  }else if((ratio>10) && (ratio<=50)){
+    ratioClass="blockbuster";
+  }else if(ratio>50){
+    ratioClass="legend";
+  }
+  const adultClass=(movie.for_adult)?"for-adult":"for-all";
+  const publicText=(movie.for_adult)?"Pour adulte":"Tout public";
   return (
     <div className="thumbnails-details">
       <div className="thumbnails-details-header">
@@ -67,8 +77,8 @@ const Details=({movie})=>  {
           <div className="thumbnails-details-content-profit-revenue">
             revenus: {movie.revenue.toLocaleString()} $
           </div>
-          <div className={`thumbnails-details-content-profit-ratio-${ratioClass}`}>
-            coefficient de rentabilité: {movie.profitability_ratio}
+          <div className={`thumbnails-details-content-profit-ratio ${ratioClass}`}>
+            coefficient de rentabilité: {ratio}
           </div>  
         </div>
         <div className="thumbnails-details-content-genres">
@@ -76,6 +86,15 @@ const Details=({movie})=>  {
             genres:
           </h3>
           <ul className="thumbnails-details-content-genres-list">
+            
+            <li
+              key = {movie.id}
+              className={`thumbnails-details-content-genres-item ${adultClass}`}
+            >
+                  {publicText}
+            </li>
+            
+
             {movie.genres.map((genre)=>{
               return (
                 <li

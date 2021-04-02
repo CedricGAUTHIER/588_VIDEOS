@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { Radio } from 'semantic-ui-react';
-import { FaSearch} from 'react-icons/fa';
 import './Search.scss';
 import axios from "axios";
 import Details from '../Thumbnails/Details';
@@ -69,13 +67,15 @@ function Collection({movies,rootURL,previousMovies, setPreviousMovies,collection
                     const datas=collectionsFiltered.filter(data=>data.name===event.target.textContent)
                     const collectionId=datas[0].id;
                     const moviesfiltered=allMovies.filter(movie=>movie.collection_id===collectionId)
+                    setPreviousMovies(moviesfiltered);
                     let resultFetch=[];
                     setCollectionToSearch("");                  
                     for(const movie of moviesfiltered){
                       resultFetch.push(await fetchDetail(movie.tmdb_id))
                     }
                     
-                    setResultsDetails(resultFetch)
+                    setResultsDetails(resultFetch);
+                    
                     setCollectionFiltered(collections);
                     setLoading(false);
                   }}

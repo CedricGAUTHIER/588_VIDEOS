@@ -3,6 +3,7 @@ import Header from '../Header';
 import Title from './Title';
 import Year from './Year';
 import Collection from './Collection';
+import Duration from './Duration'
 import './Search.scss';
 
 
@@ -74,6 +75,16 @@ function Search({pseudo, menuOpened, setMenuOpened, searchCriteria, movies, root
             previousMovies={previousMovies}
             setPreviousMovies={setPreviousMovies}
             collections={collections}
+          />
+          
+        ) }
+        {(criteria==="runtime")&&(
+          <Duration
+            movies={movies}
+            rootURL={rootURL}
+            previousMovies={previousMovies}
+            setPreviousMovies={setPreviousMovies}
+            
           />
           
         ) }

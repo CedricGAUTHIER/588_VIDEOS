@@ -58,6 +58,7 @@ const App=()=> {
       {value:"runtime",text:"Recherche par durée"},
       {value:"profitability-ratio",text:"Recherche par coefficient de profitabilité"},
       {value:"genre",text:"Recherche par genre"},
+      {value:"for_adult",text:"Pour adulte/tout public"},
       {value:"actor",text:"Recherche par acteur"},
       {value:"director",text:"Recherche par réalisateur"},
       {value:"country",text:"Recherche par pays d'origine"},
